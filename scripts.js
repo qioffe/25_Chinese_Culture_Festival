@@ -1,85 +1,138 @@
 /**
- * Dynamic Content and Interactions
- * * This script is responsible for:
- * 1. Fetching content from an external XML file (data.xml).
- * 2. Parsing the XML data.
- * 3. Dynamically rendering the Stage Program and Culture Notes sections.
- * 4. Initializing theme switching and lazy loading observers.
- * 5. Managing card interactions (expand/collapse and hover effects).
+ * Dynamic Content and Interactions Script
+ * Fetches content from an external XML file and handles UI logic.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Configuration ---
-    // Use the absolute URL provided by the user for the hosted XML data
+    // URL for the external XML content
     const xmlFilePath = 'https://qioffe.github.io/25_Chinese_Culture_Festival/festivalData';
 
     // --- Utility Functions ---
 
     /**
-     * Renders the Stage Program list items.
-     * @param {Element} programElement - The XML element for a single program item.
-     * @param {number} index - The index of the program item.
-     * @returns {string} HTML string for the program item.
+     * Toggles the open/closed state of a culture activity card.
+     * @param {HTMLElement} card - The card element to toggle.
      */
-    const renderProgramItem = (programElement, index) => {
-        const number = index + 1;
-        const titleZh = programElement.querySelector('titleZh')?.textContent || '';
-        const titleEn = programElement.querySelector('titleEn')?.textContent || '';
-        const performer = programElement.querySelector('performer')?.textContent || '';
-        const bioZh = programElement.querySelector('bioZh')?.textContent || '';
-        const bioEn = programElement.querySelector('bioEn')?.textContent || '';
+    const toggleCard = (card) => {
+        const isOpen = card.classList.contains('open');
+        const content = card.querySelector('.collapsible-content');
         
-        let bioHtml = '';
-        if (bioZh || bioEn) {
-            bioHtml = `
-                <blockquote class='bio'>
-                    ${bioZh ? `<p class="zh-content">${bioZh}</p>` : ''}
-                    ${bioEn ? `<p class="en-sub"><strong>Performer Bio:</strong> ${bioEn}</p>` : ''}
-                </blockquote>
-            `;
+        if (content) {
+            // Apply the height calculation for the transition effect
+            if (isOpen) {
+                card.classList.remove('open');
+                content.style.maxHeight = null;
+            } else {
+                card.classList.add('open');
+                // Set max-height to the scroll height for smooth 'auto' transition
+                content.style.maxHeight = content.scrollHeight + 50 + "px";
+            }
+        }
+    };
+
+    /**
+     * Safely escapes unencoded ampersands in text, which cause XML parsing errors.
+     * @param {string} text - The raw XML text.
+     * @returns {string} Sanitized XML text.
+     */
+    const sanitizeXmlText = (text) => {
+        // Replace & that is NOT part of a pre-existing entity (&amp;, &lt;, etc.)
+        return text.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#x?\d+;)/g, '&amp;');
+    }
+
+
+    // --- Rendering Functions ---
+
+    /**
+     * Renders the Stage Program list items into the DOM.
+     * @param {XMLDocument} xmlDoc - The parsed XML document.
+     */
+    const renderProgramList = (xmlDoc) => {
+        const listContainer = document.getElementById('program-list');
+        listContainer.innerHTML = ''; // Clear existing content
+
+        // Select all individual program items
+        const programs = xmlDoc.querySelectorAll('program-list program');
+
+        if (programs.length === 0) {
+            listContainer.innerHTML = '<p style="text-align: center; color: var(--color-muted);">节目列表加载失败或为空。</p>';
+            console.warn('Program list: No <program> elements found in XML.');
+            return;
         }
 
-        return `
-            <article class='program-item card lazy-load'>
+        const fragment = document.createDocumentFragment();
+
+        programs.forEach((program, index) => {
+            const number = program.getAttribute('number') || (index + 1);
+            const titleZh = program.querySelector('title-zh')?.textContent || '节目名称';
+            const titleEn = program.querySelector('title-en')?.textContent || 'Program Title';
+            const performer = program.querySelector('performer')?.textContent || '';
+            const bioZh = program.querySelector('bio-zh')?.textContent;
+            const bioEn = program.querySelector('bio-en')?.textContent;
+
+            const article = document.createElement('article');
+            article.className = 'program-item card lazy-load';
+
+            let bioHtml = '';
+            if (bioZh || bioEn) {
+                bioHtml = `<blockquote class='bio'>
+                    ${bioZh ? `<p class="zh-content">${bioZh}</p>` : ''}
+                    ${bioEn ? `<p class="en-sub"><strong>Performer Bio:</strong> ${bioEn}</p>` : ''}
+                </blockquote>`;
+            }
+
+            article.innerHTML = `
                 <div class='item-number'>${number}</div>
                 <div class="item-details">
                     <h3 class="zh-content">${titleZh}<div class='sub'>${titleEn}</div></h3>
                     <p class='performer'>${performer}</p>
                     ${bioHtml}
                 </div>
-            </article>
-        `;
+            `;
+            fragment.appendChild(article);
+        });
+
+        listContainer.appendChild(fragment);
     };
 
     /**
-     * Renders the Culture Notes list items.
-     * @param {Element} cultureElement - The XML element for a single culture note.
-     * @returns {string} HTML string for the culture note item.
+     * Renders the Culture Notes list items into the DOM and sets up click listeners.
+     * @param {XMLDocument} xmlDoc - The parsed XML document.
      */
-    const renderCultureItem = (cultureElement) => {
-        const titleZh = cultureElement.querySelector('titleZh')?.textContent || '';
-        const titleEn = cultureElement.querySelector('titleEn')?.textContent || '';
-        const image = cultureElement.querySelector('image')?.textContent || 'https://placehold.co/600x400/f0f0f0/909090?text=Placeholder';
-        const category = cultureElement.querySelector('category')?.textContent || '';
-        const descZh = cultureElement.querySelector('descZh')?.textContent || '';
-        const descEn = cultureElement.querySelector('descEn')?.textContent || '';
-        
-        const isHandsOn = category === 'Hands-On';
-        const tagClass = isHandsOn ? 'hands-on' : 'culture-101';
-        
-        // Structure: 
-        // 1. Header (Title/Subtitle + Image)
-        // 2. Collapsible Content (Description)
-        // 3. Tags/Chips (Placed at the very bottom)
-        return `
-            <li class="lazy-load">
-                <div class="card-with-image" data-expanded="false">
+    const renderCultureList = (xmlDoc) => {
+        const listContainer = document.getElementById('culture-list');
+        listContainer.innerHTML = ''; // Clear existing content
+
+        // FIX: Select the correct element tag name <note> inside <culture-notes>
+        const items = xmlDoc.querySelectorAll('culture-notes note'); 
+
+        if (items.length === 0) {
+            listContainer.innerHTML = '<li style="text-align: center; width: 100%; color: var(--color-muted); padding: 24px;">文化注释内容加载失败或为空。</li>';
+            console.warn('Culture Notes: No <note> elements found in XML with selector "culture-notes note".');
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        items.forEach((item) => {
+            const titleZh = item.querySelector('title-zh')?.textContent || '文化标题';
+            const titleEn = item.querySelector('title-en')?.textContent || 'Culture Title';
+            const descZh = item.querySelector('description-zh')?.textContent || '中文描述';
+            const descEn = item.querySelector('description-en')?.textContent || 'English Description';
+            const image = item.querySelector('image')?.textContent || 'https://placehold.co/600x400/f0f0f0/909090?text=Placeholder';
+            const category = item.getAttribute('category') || 'Culture 101';
+            const tagClass = category.toLowerCase().includes('hands-on') ? 'hands-on' : 'culture-101';
+
+            const listItem = document.createElement('li');
+
+            listItem.innerHTML = `
+                <div class="card-with-image lazy-load">
                     <div class="card-header">
-                        <div class="card-image">
-                            <img src="${image}" alt="${titleEn}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/300x300/f0f0f0/909090?text=Image+Error';">
-                        </div>
                         <div class="card-content">
                             <h3 class="zh-content">${titleZh}<div class="sub">${titleEn}</div></h3>
+                        </div>
+                        <div class="card-image">
+                            <img src="${image}" alt="${titleEn}" loading="lazy">
                         </div>
                     </div>
                     
@@ -89,37 +142,90 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="sub">${descEn}</p>
                         </div>
                     </div>
-
-                    <!-- TAGS ARE AT THE VERY BOTTOM -->
                     <div class="tag-container">
                         <button class="tag-btn ${tagClass}">${category}</button>
                     </div>
                 </div>
-            </li>
-        `;
+            `;
+            
+            const cardElement = listItem.querySelector('.card-with-image');
+            
+            // Attach click listener to the entire card
+            cardElement.addEventListener('click', () => {
+                toggleCard(cardElement);
+            });
+            
+            fragment.appendChild(listItem);
+        });
+
+        listContainer.appendChild(fragment);
     };
 
-    /**
-     * Attaches the click listener to toggle card expansion.
-     */
-    const setupCardInteractions = () => {
-        const cards = document.querySelectorAll('.card-with-image');
-        cards.forEach(card => {
-            const header = card.querySelector('.card-header');
-            if (header) {
-                header.addEventListener('click', () => {
-                    const isExpanded = card.getAttribute('data-expanded') === 'true';
-                    card.setAttribute('data-expanded', !isExpanded);
-                    card.classList.toggle('open', !isExpanded);
-                });
+
+    // --- Main Fetch and Init Logic ---
+
+    const fetchAndRenderContent = async () => {
+        try {
+            const response = await fetch(xmlFilePath);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        });
+
+            const rawText = await response.text();
+            
+            // Fix for the XML parsing error: escape bare ampersands
+            const sanitizedText = sanitizeXmlText(rawText);
+
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(sanitizedText, "text/xml");
+            
+            // Check for XML parsing errors (e.g., if the root tag is not correct)
+            if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+                 throw new Error("XML Parsing Error: Check the remote file structure for unclosed tags or invalid characters.");
+            }
+
+            renderProgramList(xmlDoc);
+            renderCultureList(xmlDoc);
+
+            // Re-initialize lazy loading after dynamic content is added
+            initializeObservers();
+
+        } catch (error) {
+            console.error('Content loading failed:', error);
+            document.getElementById('program-list').innerHTML = '<p style="text-align: center; color: red;">Error: Failed to load program content.</p>';
+            document.getElementById('culture-list').innerHTML = '<li style="text-align: center; width: 100%; color: red; padding: 24px;">Error: Failed to load cultural notes.</li>';
+        }
     };
-    
-    /**
-     * Initializes the Intersection Observer for lazy loading.
-     */
-    const setupLazyLoading = () => {
+
+
+    // --- Observers Initialization (Moved from HTML to JS) ---
+    const initializeObservers = () => {
+        // --- Scroll-triggered Theme Switching (Applied to static sections) ---
+        const sections = document.querySelectorAll('section[data-theme]');
+        const body = document.body;
+
+        const themeObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 
+        };
+
+        const themeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const theme = entry.target.getAttribute('data-theme');
+                    if (theme === 'dark') {
+                        body.classList.add('dark-mode');
+                    } else {
+                        body.classList.remove('dark-mode');
+                    }
+                }
+            });
+        }, themeObserverOptions);
+
+        sections.forEach(section => themeObserver.observe(section));
+
+        // --- Lazy Loading for info cards (Applied after content is rendered) ---
         const lazyLoadItems = document.querySelectorAll('.lazy-load');
         
         const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
@@ -134,90 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
         lazyLoadItems.forEach(item => {
             lazyLoadObserver.observe(item);
         });
-    };
-    
-    // --- Main Logic ---
+    }
 
-    /**
-     * Fetches XML content, parses it, and injects it into the DOM.
-     */
-    const fetchAndRenderContent = async () => {
-        const programListContainer = document.getElementById('program-list');
-        const cultureListContainer = document.getElementById('culture-list');
-
-        try {
-            const response = await fetch(xmlFilePath);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const xmlText = await response.text();
-
-            // Sanitize XML text: replace unescaped ampersands (&) to prevent XML parsing errors
-            const safeXmlText = xmlText.replace(/&(?!(?:apos|quot|gt|lt|amp);)/g, '&amp;');
-
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(safeXmlText, "text/xml");
-
-            if (xmlDoc.querySelector('parsererror')) {
-                console.error("XML Parsing Error:", xmlDoc.querySelector('parsererror').textContent);
-                programListContainer.innerHTML = `<p style="text-align: center; color: red;">Error loading content: XML data is malformed.</p>`;
-                cultureListContainer.innerHTML = `<p style="text-align: center; color: red;">Error loading content: XML data is malformed.</p>`;
-                return;
-            }
-
-            // 1. Render Stage Program
-            const programs = xmlDoc.querySelectorAll('program > item');
-            let programHtml = '';
-            programs.forEach((item, index) => {
-                programHtml += renderProgramItem(item, index);
-            });
-            programListContainer.innerHTML = programHtml;
-
-            // 2. Render Culture Notes
-            const cultureNotes = xmlDoc.querySelectorAll('culture > item');
-            let cultureHtml = '';
-            cultureNotes.forEach(item => {
-                cultureHtml += renderCultureItem(item);
-            });
-            cultureListContainer.innerHTML = cultureHtml;
-
-            // 3. Setup Interactions after content is loaded
-            setupCardInteractions();
-            setupLazyLoading();
-
-        } catch (error) {
-            console.error('Content loading failed:', error);
-            programListContainer.innerHTML = `<p style="text-align: center; color: red;">Failed to load program list. Please check the network connection.</p>`;
-            cultureListContainer.innerHTML = `<p style="text-align: center; color: red;">Failed to load culture notes. Please check the network connection.</p>`;
-        }
-    };
-    
-    // --- Scroll-triggered Theme Switching (Applied to static sections) ---
-    const sections = document.querySelectorAll('section[data-theme]');
-    const body = document.body;
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15 
-    };
-
-    const themeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const theme = entry.target.getAttribute('data-theme');
-                if (theme === 'dark') {
-                    body.classList.add('dark-mode');
-                } else {
-                    body.classList.remove('dark-mode');
-                }
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => themeObserver.observe(section));
-
-    // Start fetching content
+    // Start fetching content when the DOM is ready
     fetchAndRenderContent();
 });
