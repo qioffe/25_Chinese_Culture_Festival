@@ -1,36 +1,22 @@
 /**
  * Dynamic Content and Interactions Script
- * Fetches content from an external XML file and handles UI logic.
+ * Fetches content from the refined XML file and handles all UI logic.
  */
-
 document.addEventListener('DOMContentLoaded', () => {
     const xmlFilePath = 'https://qioffe.github.io/25_Chinese_Culture_Festival/festivalData.xml';
 
-    // --- Utility Functions ---
-    const toggleCard = (card) => {
-        const isOpen = card.classList.contains('open');
-        const content = card.querySelector('.collapsible-content');
-        if (content) {
-            if (isOpen) {
-                card.classList.remove('open');
-                content.style.maxHeight = null;
-            } else {
-                card.classList.add('open');
-                content.style.maxHeight = content.scrollHeight + 50 + "px";
-            }
-        }
-    };
-
-    const sanitizeXmlText = (text) => {
-        return text.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#x?\d+;)/g, '&amp;');
-    }
-
     // --- Rendering Functions ---
+
+    /**
+     * Reads the refined XML and renders the program list with genre tags.
+     */
     const renderProgramList = (xmlDoc) => {
         const programListContainer = document.getElementById("program-list");
-        programListContainer.innerHTML = '';
+        if (!programListContainer) return;
 
+        programListContainer.innerHTML = '';
         const programs = xmlDoc.querySelectorAll("program > item");
+
         if (!programs.length) {
             programListContainer.innerHTML = '<p style="text-align: center; color: var(--color-muted);">节目列表加载失败或为空。</p>';
             return;
@@ -39,22 +25,32 @@ document.addEventListener('DOMContentLoaded', () => {
         programs.forEach(item => {
             const number = item.getAttribute("number");
             const performer = item.getAttribute("performer");
-            const titleZh = item.querySelector("titleZh")?.textContent || '';
-            const titleEn = item.querySelector("titleEn")?.textContent || '';
-            const bioZh = item.querySelector("bioZh")?.textContent || '';
-            const bioEn = item.querySelector("bioEn")?.textContent || '';
 
+            // Query for elements using attributes to get correct language data.
+            // Note the '\\' is required to escape the ':' in the selector.
+            const genreZh = Array.from(item.querySelectorAll('genre[xml\\:lang="zh-Hans"]')).map(el => el.textContent).join(' / ');
+            const genreEn = Array.from(item.querySelectorAll('genre[xml\\:lang="en"]')).map(el => el.textContent).join(' / ');
+            const titleZh = item.querySelector('title[xml\\:lang="zh-Hans"]')?.textContent || '';
+            const titleEn = item.querySelector('title[xml\\:lang="en"]')?.textContent || '';
+            const bioZh = item.querySelector('bio[xml\\:lang="zh-Hans"]')?.textContent || '';
+            const bioEn = item.querySelector('bio[xml\\:lang="en"]')?.textContent || '';
+            
+            // This HTML structure includes the .genre-tag span and the subtitle paragraph
             const programHTML = `
                 <div class="program-item card lazy-load">
-                    <div class="program-number">${number}</div>
-                    <div class="program-details">
-                        <h3>${titleZh} <span class="en-sub">${titleEn}</span></h3>
+                    <span class="item-number">${number}</span>
+                    <div class="item-details">
+                        <h3>
+                            ${genreZh ? `<span class="genre-tag">${genreZh}</span>` : ''}
+                            <span class="title-zh">${titleZh}</span>
+                        </h3>
+                        <p class="sub en-sub">${genreEn ? `${genreEn}: ` : ''}${titleEn}</p>
                         <p class="performer">${performer}</p>
                         ${bioZh || bioEn ? `
-                            <blockquote class="bio">
-                                ${bioZh ? `<p>${bioZh}</p>` : ''}
-                                ${bioEn ? `<p class="en-sub"><strong>Performer Bio:</strong> ${bioEn}</p>` : ''}
-                            </blockquote>
+                            <div class="bio">
+                                ${bioZh ? `<p class="zh-content">${bioZh}</p>` : ''}
+                                ${bioEn ? `<p class="en-sub">${bioEn}</p>` : ''}
+                            </div>
                         ` : ''}
                     </div>
                 </div>
@@ -63,11 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    /**
+     * Reads the refined XML and renders the culture notes list.
+     */
     const renderCultureList = (xmlDoc) => {
         const cultureListContainer = document.getElementById("culture-list");
-        cultureListContainer.innerHTML = '';
+        if (!cultureListContainer) return;
 
+        cultureListContainer.innerHTML = '';
         const notes = xmlDoc.querySelectorAll("cultureNotes > note");
+
         if (!notes.length) {
             cultureListContainer.innerHTML = '<li style="text-align:center;color:var(--color-muted);padding:24px;">文化注释内容加载失败或为空。</li>';
             return;
@@ -75,39 +76,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
         notes.forEach(note => {
             const category = note.getAttribute("category") || 'Culture 101';
-            const image = note.getAttribute("image") || 'https://placehold.co/600x400/f0f0f0/909090?text=Placeholder';
-            const titleZh = note.querySelector("titleZh")?.textContent || '';
-            const titleEn = note.querySelector("titleEn")?.textContent || '';
-            const descZh = note.querySelector("descZh")?.textContent || '';
-            const descEn = note.querySelector("descEn")?.textContent || '';
+            const image = note.getAttribute("image") || 'https://placehold.co/600x400';
+            const titleZh = note.querySelector('title[xml\\:lang="zh-Hans"]')?.textContent || '';
+            const titleEn = note.querySelector('title[xml\\:lang="en"]')?.textContent || '';
+            const descZh = note.querySelector('desc[xml\\:lang="zh-Hans"]')?.textContent || '';
+            const descEn = note.querySelector('desc[xml\\:lang="en"]')?.textContent || '';
             const tagClass = category.toLowerCase().includes('hands-on') ? 'hands-on' : 'culture-101';
 
             const noteHTML = `
-                <li>
-                    <div class="card-with-image lazy-load">
-                        <div class="card-header">
-                            <div class="card-content">
-                                <h3>${titleZh} <div class="sub">${titleEn}</div></h3>
-                            </div>
-                            <div class="card-image">
-                                <img src="${image}" alt="${titleEn}" loading="lazy">
-                            </div>
+                <li class="card-with-image lazy-load">
+                    <div class="card-header">
+                        <div class="card-content">
+                            <h3>${titleZh}</h3>
+                            <p class="sub en-sub">${titleEn}</p>
                         </div>
-                        <div class="collapsible-content">
-                            <p>${descZh}</p>
-                            <p class="sub">${descEn}</p>
+                        <div class="card-image">
+                            <img src="${image}" alt="${titleEn}" loading="lazy">
                         </div>
-                        <div class="tag-container">
-                            <button class="tag-btn ${tagClass}">${category}</button>
-                        </div>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="zh-content">${descZh}</p>
+                        <p class="en-sub">${descEn}</p>
+                    </div>
+                    <div class="tag-container">
+                        <span class="tag-btn ${tagClass}">${category}</span>
                     </div>
                 </li>
             `;
-            const temp = document.createElement('div');
-            temp.innerHTML = noteHTML;
-            const cardElement = temp.querySelector('.card-with-image');
-            cardElement.addEventListener('click', () => toggleCard(cardElement));
-            cultureListContainer.appendChild(temp.firstElementChild);
+            cultureListContainer.insertAdjacentHTML("beforeend", noteHTML);
+        });
+
+        // Use event delegation for better performance
+        cultureListContainer.addEventListener('click', (event) => {
+            const card = event.target.closest('.card-with-image');
+            if (card) {
+                card.classList.toggle('open');
+            }
         });
     };
 
@@ -116,13 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(xmlFilePath);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const rawText = await response.text();
-            const sanitizedText = sanitizeXmlText(rawText);
-
+            
+            const xmlText = await response.text();
             const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(sanitizedText, "text/xml");
+            const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
             if (xmlDoc.getElementsByTagName("parsererror").length) {
-                throw new Error("XML Parsing Error");
+                throw new Error("XML Parsing Error. Check if your XML is well-formed.");
             }
 
             renderProgramList(xmlDoc);
@@ -130,21 +134,19 @@ document.addEventListener('DOMContentLoaded', () => {
             initializeObservers();
         } catch (err) {
             console.error('Content loading failed:', err);
-            document.getElementById('program-list').innerHTML = '<p style="text-align:center;color:red;">Error: Failed to load program content.</p>';
-            document.getElementById('culture-list').innerHTML = '<li style="text-align:center;color:red;padding:24px;">Error: Failed to load cultural notes.</li>';
+            document.getElementById('program-list').innerHTML = `<p style="text-align:center;color:red;">Error: ${err.message}</p>`;
+            document.getElementById('culture-list').innerHTML = `<li style="text-align:center;color:red;padding:24px;">Error: ${err.message}</li>`;
         }
     };
 
     // --- Observers for Lazy Load & Theme Switching ---
     const initializeObservers = () => {
         const sections = document.querySelectorAll('section[data-theme]');
-        const body = document.body;
-
         const themeObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const theme = entry.target.getAttribute('data-theme');
-                    body.classList.toggle('dark-mode', theme === 'dark');
+                    document.body.classList.toggle('dark-mode', theme === 'dark');
                 }
             });
         }, { threshold: 0.15 });
@@ -158,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+        }, { threshold: 0.1 });
         lazyLoadItems.forEach(item => lazyLoadObserver.observe(item));
     };
 
