@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <festivalData>
 
+  <!-- Stage Program List -->
   <program>
     <item number="1" performer="Lee Koon Hung Kung Fu Association">
       <genre xml:lang="zh-Hans">舞狮</genre>
@@ -148,6 +149,7 @@
     </item>
   </program>
 
+  <!-- Culture Notes Section -->
   <cultureNotes>
     <note category="Culture 101" image="https://placehold.co/600x400/f0f0f0/909090?text=Mid-Autumn+Festival">
       <title xml:lang="zh-Hans">中秋节</title>
@@ -217,3 +219,4 @@
     </note>
   </cultureNotes>
 </festivalData>
+
