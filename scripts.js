@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const listContainer = document.getElementById('program-list');
         listContainer.innerHTML = ''; // Clear existing content
 
-        // Select all individual program items
-        const programs = xmlDoc.querySelectorAll('program-list program');
+        // FIX: XML structure is <program><item>...</item></program>, selecting all <item> elements.
+        const programs = xmlDoc.querySelectorAll('program item');
 
         if (programs.length === 0) {
             listContainer.innerHTML = '<p style="text-align: center; color: var(--color-muted);">节目列表加载失败或为空。</p>';
@@ -62,13 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const fragment = document.createDocumentFragment();
 
-        programs.forEach((program, index) => {
-            const number = program.getAttribute('number') || (index + 1);
-            const titleZh = program.querySelector('title-zh')?.textContent || '节目名称';
-            const titleEn = program.querySelector('title-en')?.textContent || 'Program Title';
-            const performer = program.querySelector('performer')?.textContent || '';
-            const bioZh = program.querySelector('bio-zh')?.textContent;
-            const bioEn = program.querySelector('bio-en')?.textContent;
+        programs.forEach((program) => {
+            // Attributes are read from the <item> tag itself
+            const number = program.getAttribute('number') || '';
+            const performer = program.getAttribute('performer') || '';
+            
+            // Sub-elements are read as children of <item>
+            const titleZh = program.querySelector('titleZh')?.textContent || '节目名称';
+            const titleEn = program.querySelector('titleEn')?.textContent || 'Program Title';
+            const bioZh = program.querySelector('bioZh')?.textContent;
+            const bioEn = program.querySelector('bioEn')?.textContent;
 
             const article = document.createElement('article');
             article.className = 'program-item card lazy-load';
@@ -103,24 +106,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const listContainer = document.getElementById('culture-list');
         listContainer.innerHTML = ''; // Clear existing content
 
-        // FIX: Select the correct element tag name <note> inside <culture-notes>
-        const items = xmlDoc.querySelectorAll('culture-notes note'); 
+        // FIX: The XML uses the PascalCase tag <cultureNotes> for the parent container.
+        const items = xmlDoc.querySelectorAll('cultureNotes note'); 
 
         if (items.length === 0) {
             listContainer.innerHTML = '<li style="text-align: center; width: 100%; color: var(--color-muted); padding: 24px;">文化注释内容加载失败或为空。</li>';
-            console.warn('Culture Notes: No <note> elements found in XML with selector "culture-notes note".');
+            console.warn('Culture Notes: No <note> elements found in XML with selector "cultureNotes note".');
             return;
         }
 
         const fragment = document.createDocumentFragment();
 
         items.forEach((item) => {
-            const titleZh = item.querySelector('title-zh')?.textContent || '文化标题';
-            const titleEn = item.querySelector('title-en')?.textContent || 'Culture Title';
-            const descZh = item.querySelector('description-zh')?.textContent || '中文描述';
-            const descEn = item.querySelector('description-en')?.textContent || 'English Description';
-            const image = item.querySelector('image')?.textContent || 'https://placehold.co/600x400/f0f0f0/909090?text=Placeholder';
+            const titleZh = item.querySelector('titleZh')?.textContent || '文化标题';
+            const titleEn = item.querySelector('titleEn')?.textContent || 'Culture Title';
+            const descZh = item.querySelector('descZh')?.textContent || '中文描述';
+            const descEn = item.querySelector('descEn')?.textContent || 'English Description';
+            
+            // Attributes are read from the <note> tag itself
+            const image = item.getAttribute('image') || 'https://placehold.co/600x400/f0f0f0/909090?text=Placeholder';
             const category = item.getAttribute('category') || 'Culture 101';
+            
             const tagClass = category.toLowerCase().includes('hands-on') ? 'hands-on' : 'culture-101';
 
             const listItem = document.createElement('li');
