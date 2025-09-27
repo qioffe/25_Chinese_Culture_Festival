@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <festivalData>
 
-  <!-- Stage Program List -->
   <program>
     <item number="1" performer="Lee Koon Hung Kung Fu Association">
       <genre xml:lang="zh-Hans">舞狮</genre>
@@ -149,9 +148,8 @@
     </item>
   </program>
 
-  <!-- Culture Notes Section -->
   <cultureNotes>
-    <note category="Culture 101" image="https://images.unsplash.com/photo-1695896096099-8a83cea6e929?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <note category="Culture 101" image="https://images.unsplash.com/photo-1695896096099-8a83cea6e929?q=80&amp;w=2340&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">中秋节</title>
       <title xml:lang="en">Mid‑Autumn Festival</title>
       <desc xml:lang="zh-Hans">农历八月十五，赏月团圆、吃月饼、提灯笼。传说有嫦娥、玉兔、吴刚。圆月象征团圆与思念。</desc>
@@ -163,7 +161,7 @@
       <desc xml:lang="zh-Hans">苏轼 1076 年名篇，借月寄怀，表达“人有悲欢离合，月有阴晴圆缺”的人生感悟，结句“但愿人长久，千里共婵娟”。</desc>
       <desc xml:lang="en">Su Shi’s 1076 classic reflects on reunion and separation through the moon; closing wish: “May we all be blessed with longevity, though thousands of miles apart.”</desc>
     </note>
-    <note category="Culture 101" image="https://images.unsplash.com/photo-1708840250299-18857298ab8a?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <note category="Culture 101" image="https://images.unsplash.com/photo-1708840250299-18857298ab8a?q=80&amp;w=3544&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">舞狮</title>
       <title xml:lang="en">Lion Dance</title>
       <desc xml:lang="zh-Hans">寓意驱邪纳福、开运迎吉。分南北狮，锣鼓点配合腾挪跳跃；常见于新春、开业、庆典。</desc>
@@ -175,7 +173,7 @@
       <desc xml:lang="zh-Hans">“唱念做打”兼具，生旦净丑四行当；脸谱色彩寓意性格，如红忠勇、黑刚直、白多疑。</desc>
       <desc xml:lang="en">Blends singing, speech, movement, combat; role types (sheng, dan, jing, chou) with symbolic face‑paint colors.</desc>
     </note>
-    <note category="Culture 101" image="https://www.guzheng-world.com/cdn/shop/products/IMG_2544.jpg?v=1664818599&width=1445">
+    <note category="Culture 101" image="https://www.guzheng-world.com/cdn/shop/products/IMG_2544.jpg?v=1664818599&amp;width=1445">
       <title xml:lang="zh-Hans">古筝</title>
       <title xml:lang="en">Guzheng</title>
       <desc xml:lang="zh-Hans">21弦拨弹乐器，常用五声音阶，滑音与摇指展现流水般音色。</desc>
@@ -193,7 +191,7 @@
       <desc xml:lang="zh-Hans">投箭进壶，命中拿奖品！</desc>
       <desc xml:lang="en">Throw arrows into a pot to win prizes!</desc>
     </note>
-    <note category="Hands-On" image="https://www.majimelife.com.au/cdn/shop/articles/hand-holding-chopsticks_5be1a063-7397-49eb-8d0d-0a3cf62a84d5.jpg?v=1710994803&width=1500">
+    <note category="Hands-On" image="https://www.majimelife.com.au/cdn/shop/articles/hand-holding-chopsticks_5be1a063-7397-49eb-8d0d-0a3cf62a84d5.jpg?v=1710994803&amp;width=1500">
       <title xml:lang="zh-Hans">筷子比赛</title>
       <title xml:lang="en">Chopstick Challenge</title>
       <desc xml:lang="zh-Hans">30秒夹糖果，比谁多谁赢。</desc>
@@ -205,13 +203,13 @@
       <desc xml:lang="zh-Hans">DIY彩绘或装饰纸扇，做专属小扇子。</desc>
       <desc xml:lang="en">Decorate a paper fan with colors and patterns.</desc>
     </note>
-    <note category="Hands-On" image="https://images.unsplash.com/photo-1620140036708-455ed5c0426a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <note category="Hands-On" image="https://images.unsplash.com/photo-1620140036708-455ed5c0426a?q=80&amp;w=1374&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">中国手工</title>
       <title xml:lang="en">Chinese Handicrafts</title>
       <desc xml:lang="zh-Hans">制作灯笼、拉拉龙或漆扇。</desc>
       <desc xml:lang="en">Make lanterns, pull dragons, or painted fans.</desc>
     </note>
-    <note category="Hands-On" image="https://images.unsplash.com/photo-1524548209323-6fb4a0d4a4a3?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    <note category="Hands-On" image="https://images.unsplash.com/photo-1524548209323-6fb4a0d4a4a3?q=80&amp;w=1376&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">传统服装</title>
       <title xml:lang="en">Traditional Costume</title>
       <desc xml:lang="zh-Hans">试穿中国传统服装，拍美照。</desc>
@@ -219,4 +217,3 @@
     </note>
   </cultureNotes>
 </festivalData>
-
