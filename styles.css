@@ -1,6 +1,6 @@
 /**
  * Festival Styles: styles.css
- **/
+ */
 :root {
   --hue-primary: 50;
   /* Yellow */
@@ -40,7 +40,8 @@ body {
 }
 
 body {
-  --bg-card: hsla(0, 0%, 100%, 0.9);
+  /* MODIFIED: Increased opacity for a whiter card look */
+  --bg-card: hsla(0, 0%, 100%, 0.95); 
   --color-ink: hsl(222, 28%, 15%);
   --color-muted: hsl(215, 15%, 45%);
   --color-accent: hsl(var(--hue-primary), 80%, 50%);
@@ -69,9 +70,10 @@ body::after {
 body::before {
   background-image: linear-gradient(
     160deg,
-        hsl(var(--hue-secondary), 100%, 100%),
-        hsl(var(--hue-primary), 100%, 100%),
-        hsl(var(--hue-tertiary), 100%, 100%)
+    /* MODIFIED: Set lightness to 100% for a pure white background */
+    hsl(var(--hue-secondary), 100%, 100%),
+    hsl(var(--hue-primary), 100%, 100%),
+    hsl(var(--hue-tertiary), 100%, 100%)
   );
   opacity: 1;
 }
@@ -147,25 +149,26 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 2.5rem); /* ~32px to 40px */
   text-align: center;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.375rem; /* 22px / 16px = 1.375rem */
   line-height: 1.4;
 }
 
 h4 {
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 600; /* Medium/Semi-bold weight */
+  font-size: 1rem; /* 16px */
 }
 
 p {
   color: var(--color-muted);
   line-height: 1.6;
   margin: 0.5em 0 0;
+  font-size: 1rem;
 }
 
 p,
@@ -260,11 +263,11 @@ section {
   -webkit-mask-image: radial-gradient(
     circle at center,
     black 60%,
-    /* Solid black in the center */ transparent 100%
-      /* Fades to transparent towards the edges */
+    transparent 100%
   );
   mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
-  /* You can also add a subtle outer box-shadow if you want a visible "glow" */
+  
+  box-shadow: 0 0 40px rgba(var(--hue-primary), 80%, 50%, 0.3); /* Subtle accent glow */
   transition: box-shadow 0.3s ease; /* Add transition for hover effect if desired */
 }
 
@@ -303,7 +306,7 @@ section {
 #hero h1 {
   color: hsl(var(--hue-secondary), 100%, 75%);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* Increased space below h1 */
 }
 
 #hero p {
@@ -324,8 +327,9 @@ section {
 }
 
 .hero-tagline {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 600;
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   background-color: transparent;
   border: none;
@@ -333,6 +337,23 @@ section {
   font-family: var(--font-body-zh);
   color: hsl(var(--hue-secondary), 100%, 75%);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.mobile-break {
+    display: none;
+}
+
+/* --- Media Query for Mobile (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .mobile-break {
+        display: block; /* Force H1 line break */
+    }
+    #hero h1 {
+        margin-bottom: 1.5rem; /* Reduced space on mobile */
+    }
+    .flex-fade-image {
+        max-width: 95vw; /* Make flexible image larger on mobile */
+    }
 }
 
 /* === Sponsor Logo Slider === */
@@ -346,6 +367,10 @@ section {
   padding: 0;
   background: transparent;
 
+  /* MODIFIED: Added vertical space after the loop */
+  margin-bottom: 80px; 
+  
+  /* FOUR-SIDED SUBTLE FADE MASK */
   -webkit-mask-image: linear-gradient(
       to bottom,
       transparent,
@@ -389,6 +414,8 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  
+  /* LARGER CONTAINER SIZE */
   height: 140px;
   width: 280px;
 
@@ -396,10 +423,14 @@ section {
 }
 
 .logo-slider .slide img {
+  /* LARGER & RATIO-PRESERVING LOGOS */
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-  filter: none;
+  
+  /* ALWAYS COLORED & VISIBLE (no filter/opacity 1) */
+  filter: none; 
+  opacity: 1;
 }
 
 @keyframes slide {
@@ -413,56 +444,47 @@ section {
   }
 }
 
+/* --- Flexible Image Styling --- */
+/* The HTML uses an inline style div, so #image-flex styles are placed here 
+   to control the image itself. */
+
+/* Assuming this ID applies to the overall container, its padding is the vertical gap */
 #image-flex {
-  padding: 10vh 0; /* Adjust vertical padding */
+  padding: 20vh 0; /* Controls vertical padding for the section content */
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .flex-fade-image {
-  width: 90%;
-  max-width: 60vw;
+  width: 100%;
+  max-width: 80vw; /* Using 80vw for desktop responsiveness */
   height: auto;
   object-fit: cover;
   border-radius: 20px;
   display: block;
   margin: 0 auto;
-  -webkit-mask-image: 
-    /* Fade from Top */ linear-gradient(
-      to bottom,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    ),
-    /* Fade from Bottom */
-      linear-gradient(to top, transparent, black 10%, black 90%, transparent),
-    /* Fade from Left */
-      linear-gradient(to right, transparent, black 10%, black 90%, transparent),
-    /* Fade from Right */
-      linear-gradient(to left, transparent, black 10%, black 90%, transparent);
+  
+  /* FOUR-SIDED SUBTLE FADE MASK */
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to top, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to right, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to left, transparent, black 10%, black 90%, transparent);
 
-  mask-image: 
-    /* Fade from Top */ linear-gradient(
-      to bottom,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    ),
-    /* Fade from Bottom */
-      linear-gradient(to top, transparent, black 10%, black 90%, transparent),
-    /* Fade from Left */
-      linear-gradient(to right, transparent, black 10%, black 90%, transparent),
-    /* Fade from Right */
-      linear-gradient(to left, transparent, black 10%, black 90%, transparent);
+  mask-image:
+    linear-gradient(to bottom, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to top, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to right, transparent, black 10%, black 90%, transparent),
+    linear-gradient(to left, transparent, black 10%, black 90%, transparent);
 
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
+  
+  /* WHITE GLOW FOR BLENDING */
   box-shadow: 0 0 100px 50px rgba(255, 255, 255, 0.8),
-    /* Large, soft white shadow */ 0 0 30px
-      rgba(var(--hue-secondary), 80%, 50%, 0.1);
+    0 0 30px rgba(var(--hue-secondary), 80%, 50%, 0.1);
 }
 
 /* === Quick Info / Bento Grid === */
@@ -489,6 +511,7 @@ section {
   padding: 0;
   overflow: hidden;
   border-radius: 20px;
+  /* MODIFIED: Changed max-height to vh unit */
   max-height: 20vh;
   transition: max-height 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   border: 1px solid var(--color-border);
@@ -496,7 +519,8 @@ section {
 }
 
 .bento-item.collapsible-map[open] {
-  max-height: 140vh;
+  /* MODIFIED: Changed max-height to vh unit */
+  max-height: 60vh; /* Adjusted to 60vh for a more reasonable map size */
 }
 
 .map-summary {
@@ -705,8 +729,9 @@ body.dark-mode .tag-btn.hands-on {
 }
 
 /* === CULTURE NOTES === */
+/* MODIFIED: Increased margin-bottom on feed-heading for better separation */
 .feed-heading {
-  margin-bottom: 60px;
+  margin-bottom: 80px; 
   text-align: center;
 }
 
@@ -765,7 +790,7 @@ body.dark-mode .tag-btn.hands-on {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Vertically center content with image */
 }
 
 .card-content h3 {
@@ -837,7 +862,7 @@ body.dark-mode .tag-btn.hands-on {
   flex-direction: column;
   align-items: center;
 
-  gap: 3rem;
+  gap: 3rem; /* Proper vertical spacing between elements */
 
   text-align: center;
 }
