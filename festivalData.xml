@@ -146,11 +146,11 @@
       <bio xml:lang="zh-Hans">12岁时荣获ELITE国际音乐比赛大奖；获得郎朗的认可与赞誉。</bio>
       <bio xml:lang="en">Won the ELITE INTERNATIONAL MUSIC COMPETITION at age 12; received recognition from Lang Lang.</bio>
     </item>
-    <item number="19" performer="">
+    <item number="19" performer=" ">
       <genre xml:lang="zh-Hans">表演</genre>
       <genre xml:lang="en">Hanfu Show</genre>
       <title xml:lang="zh-Hans"> 汉服秀</title>
-      <title xml:lang="en"></title>
+      <title xml:lang="en"> </title>
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
