@@ -18,18 +18,19 @@
   <link rel="stylesheet" href="styles.css">
 
   <script>
-    (function() {
-        const cacheBuster = new Date().getTime();
-        const images = document.querySelectorAll('img');
+        (function() {
+            document.body.classList.add('dark-mode');
+        })();
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const cacheBuster = new Date().getTime();
+            const images = document.querySelectorAll('img');
 
-        images.forEach(img => {
-            const separator = img.src.includes('?') ? '&' : '?';
-            img.src = img.src + separator + cacheBuster;
+            images.forEach(img => {
+                const separator = img.src.includes('?') ? '&' : '?';
+                img.src = img.src + separator + cacheBuster;
+            });
         });
-
-        // Set dark mode class (from your original script)
-        document.body.classList.add('dark-mode');
-    })();
   </script>
 </head>
 
@@ -91,7 +92,7 @@
 
     <section id="sponsors" data-theme="light">
       <div class="wrap">
-        <h2 class="feed-heading">感谢同行 <span class="en-sub"><br class="mobile-break">Our Our Wonderful Partners</span></h2>
+        <h2 class="feed-heading">感谢同行 <span class="en-sub"><br class="mobile-break">Hosts and Partners</span></h2>
         
         <div class="logo-slider-wrapper">
           <div class="logo-slider">
