@@ -43,7 +43,15 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="6" performer="Jimenez‑Maydon · Lucia Moreno · Carolina Hudson · Alexa Natori · Yumeno">
+    <item number="6" performer="姚佳芮 (Jiarui Yao)">
+      <genre xml:lang="zh-Hans">演唱</genre>
+      <genre xml:lang="en">Vocal</genre>
+      <title xml:lang="zh-Hans">明月几时有</title>
+      <title xml:lang="en">“When Will the Moon Be Clear and Bright?”</title>
+      <bio xml:lang="zh-Hans">迈阿密戴德学院声乐教授。</bio>
+      <bio xml:lang="en">Vocal professor at Miami Dade College.</bio>
+    </item>
+    <item number="7" performer="Jimenez‑Maydon · Lucia Moreno · Carolina Hudson · Alexa Natori · Yumeno">
       <genre xml:lang="zh-Hans">扇舞/龙舞</genre>
       <genre xml:lang="en">Fan &amp; Dragon Dance</genre>
       <title xml:lang="zh-Hans">《骁》</title>
@@ -51,7 +59,7 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="7" performer="Zahara Cunningham·Annalia Bernadin·Taliyah Nunes·Aniya Charles · Brea Washington · Frantzcesskah Jean">
+    <item number="8" performer="Zahara Cunningham·Annalia Bernadin·Taliyah Nunes·Aniya Charles · Brea Washington · Frantzcesskah Jean">
       <genre xml:lang="zh-Hans">歌舞</genre>
       <genre xml:lang="en">Song &amp; Dance</genre>
       <title xml:lang="zh-Hans">《寄明月》</title>
@@ -59,7 +67,7 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="8" performer="Samy El Nernissi">
+    <item number="9" performer="Samy El Nernissi">
       <genre xml:lang="zh-Hans">说唱</genre>
       <genre xml:lang="en">Rap</genre>
       <title xml:lang="zh-Hans">《字正腔圆》</title>
@@ -67,7 +75,7 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="9" performer="Noah Mitchell">
+    <item number="10" performer="Noah Mitchell">
       <genre xml:lang="zh-Hans">演唱</genre>
       <genre xml:lang="en">Vocal</genre>
       <title xml:lang="zh-Hans">《生僻字》</title>
@@ -75,7 +83,7 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="10" performer="于洁 × Noah Mitchell">
+    <item number="11" performer="于洁 (Yu Jie) × Noah Mitchell">
       <genre xml:lang="zh-Hans">京剧</genre>
       <genre xml:lang="en">Peking Opera</genre>
       <title xml:lang="zh-Hans">梨花颂 (+ 传承二重唱)</title>
@@ -83,7 +91,7 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="11" performer="Joshua Ho">
+    <item number="12" performer="Joshua Ho">
       <genre xml:lang="zh-Hans">演唱</genre>
       <genre xml:lang="en">Vocal</genre>
       <title xml:lang="zh-Hans">朋友 (韩语)</title>
@@ -91,7 +99,7 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="12" performer="World Class Martial Arts">
+    <item number="13" performer="World Class Martial Arts">
       <genre xml:lang="zh-Hans">跆拳道</genre>
       <genre xml:lang="en">Taekwondo</genre>
       <title xml:lang="zh-Hans">表演</title>
@@ -99,7 +107,7 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="13" performer="宋怡 · 束放">
+    <item number="14" performer="宋怡 (Yi Song)· 束放 (Fang Su)">
       <genre xml:lang="zh-Hans">二重唱</genre>
       <genre xml:lang="en">Duet</genre>
       <title xml:lang="zh-Hans">浏阳河</title>
@@ -107,7 +115,7 @@
       <bio xml:lang="zh-Hans">国家一级专业古筝演奏家，毕业于中央音乐学院，曾获多项重要器乐比赛大奖。</bio>
       <bio xml:lang="en">National First‑Class professional guzheng performer in China, graduate of the Central Conservatory of Music, and winner of major instrument competitions.</bio>
     </item>
-    <item number="14" performer="唐长魁">
+    <item number="15" performer="唐长魁 (Changkui Tang)">
       <genre xml:lang="zh-Hans">京胡独奏</genre>
       <genre xml:lang="en">Jinghu Solo</genre>
       <title xml:lang="zh-Hans">夜深沉</title>
@@ -115,7 +123,7 @@
       <bio xml:lang="zh-Hans">著名笛子、二胡、京胡演奏家；曾任解放军空军歌舞团民乐队队长。</bio>
       <bio xml:lang="en">Renowned performer of dizi, erhu and jinghu; former head of the folk orchestra of the PLA Air Force Song and Dance Ensemble.</bio>
     </item>
-    <item number="15" performer="伊淳 · Olivia Tsai · Allina · Annie">
+    <item number="16" performer="伊淳 (Yi Chun)· Olivia Tsai · Allina · Annie">
       <genre xml:lang="zh-Hans">舞蹈</genre>
       <genre xml:lang="en">Dance</genre>
       <title xml:lang="zh-Hans">雨巷佳人</title>
@@ -123,21 +131,13 @@
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
     </item>
-    <item number="16" performer="Angelina Cui（崔墨熙）· Cecilia Stoute Chen（陈天）">
+    <item number="17" performer="Angelina Cui（崔墨熙）· Cecilia Stoute Chen（陈天）">
       <genre xml:lang="zh-Hans">诗歌朗诵</genre>
       <genre xml:lang="en">Poetry Recital</genre>
       <title xml:lang="zh-Hans">明月几时有</title>
       <title xml:lang="en">“When Will the Moon Be Clear and Bright?”</title>
       <bio xml:lang="zh-Hans"></bio>
       <bio xml:lang="en"></bio>
-    </item>
-    <item number="17" performer="姚佳芮">
-      <genre xml:lang="zh-Hans">演唱</genre>
-      <genre xml:lang="en">Vocal</genre>
-      <title xml:lang="zh-Hans">明月几时有</title>
-      <title xml:lang="en">“When Will the Moon Be Clear and Bright?”</title>
-      <bio xml:lang="zh-Hans">迈阿密戴德学院声乐教授。</bio>
-      <bio xml:lang="en">Vocal professor at Miami Dade College.</bio>
     </item>
     <item number="18" performer="Selina Zhou">
       <genre xml:lang="zh-Hans">钢琴</genre>
@@ -151,67 +151,67 @@
 
   <!-- Culture Notes Section -->
   <cultureNotes>
-    <note category="Culture 101" image="https://placehold.co/600x400/f0f0f0/909090?text=Mid-Autumn+Festival">
+    <note category="Culture 101" image="https://images.unsplash.com/photo-1695896096099-8a83cea6e929?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">中秋节</title>
       <title xml:lang="en">Mid‑Autumn Festival</title>
       <desc xml:lang="zh-Hans">农历八月十五，赏月团圆、吃月饼、提灯笼。传说有嫦娥、玉兔、吴刚。圆月象征团圆与思念。</desc>
       <desc xml:lang="en">On the 15th day of the 8th lunar month, families reunite to admire the full moon, share mooncakes and lanterns—symbols of togetherness and longing.</desc>
     </note>
-    <note category="Culture 101" image="https://placehold.co/600x400/f0f0f0/909090?text=Poetry+Scroll">
+    <note category="Culture 101" image="https://www.silkqin.com/02qnpu/54sfgq/images/ssc07sdgt.jpg">
       <title xml:lang="zh-Hans">水调歌头</title>
       <title xml:lang="en">Prelude to the Water Melody</title>
       <desc xml:lang="zh-Hans">苏轼 1076 年名篇，借月寄怀，表达“人有悲欢离合，月有阴晴圆缺”的人生感悟，结句“但愿人长久，千里共婵娟”。</desc>
       <desc xml:lang="en">Su Shi’s 1076 classic reflects on reunion and separation through the moon; closing wish: “May we all be blessed with longevity, though thousands of miles apart.”</desc>
     </note>
-    <note category="Culture 101" image="https://placehold.co/600x400/f0f0f0/909090?text=Lion+Dance">
+    <note category="Culture 101" image="https://images.unsplash.com/photo-1708840250299-18857298ab8a?q=80&w=3544&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">舞狮</title>
       <title xml:lang="en">Lion Dance</title>
       <desc xml:lang="zh-Hans">寓意驱邪纳福、开运迎吉。分南北狮，锣鼓点配合腾挪跳跃；常见于新春、开业、庆典。</desc>
       <desc xml:lang="en">A symbol of luck and protection; Southern/Northern styles with acrobatics to drum–gong rhythms.</desc>
     </note>
-    <note category="Culture 101" image="https://placehold.co/600x400/f0f0f0/909090?text=Peking+Opera">
+    <note category="Culture 101" image="https://i.ytimg.com/vi/PnMRIzpO4nU/maxresdefault.jpg">
       <title xml:lang="zh-Hans">京剧</title>
       <title xml:lang="en">Peking Opera</title>
       <desc xml:lang="zh-Hans">“唱念做打”兼具，生旦净丑四行当；脸谱色彩寓意性格，如红忠勇、黑刚直、白多疑。</desc>
       <desc xml:lang="en">Blends singing, speech, movement, combat; role types (sheng, dan, jing, chou) with symbolic face‑paint colors.</desc>
     </note>
-    <note category="Culture 101" image="https://placehold.co/600x400/f0f0f0/909090?text=Guzheng">
+    <note category="Culture 101" image="https://www.guzheng-world.com/cdn/shop/products/IMG_2544.jpg?v=1664818599&width=1445">
       <title xml:lang="zh-Hans">古筝</title>
       <title xml:lang="en">Guzheng</title>
       <desc xml:lang="zh-Hans">21弦拨弹乐器，常用五声音阶，滑音与摇指展现流水般音色。</desc>
       <desc xml:lang="en">A 21‑string plucked zither known for glissandos and shimmering tremolos.</desc>
     </note>
-    <note category="Hands-On" image="https://placehold.co/600x400/f0f0f0/909090?text=Ring+Toss">
+    <note category="Hands-On" image="https://pic.cyol.com/img/20220601/img_966da58ee7c846907989a4d1be3a439d59_c.jpg">
       <title xml:lang="zh-Hans">套圈</title>
       <title xml:lang="en">Ring Toss</title>
       <desc xml:lang="zh-Hans">用小圈套住奖品，套中就赢！</desc>
       <desc xml:lang="en">Toss rings to land on prizes and win!</desc>
     </note>
-    <note category="Hands-On" image="https://placehold.co/600x400/f0f0f0/909090?text=Pitch+Pot">
+    <note category="Hands-On" image="https://pica.zhimg.com/v2-cd26170313f5a6e1784eeb410f4019d8_1440w.jpg">
       <title xml:lang="zh-Hans">投壶</title>
       <title xml:lang="en">Pitch Pot</title>
       <desc xml:lang="zh-Hans">投箭进壶，命中拿奖品！</desc>
       <desc xml:lang="en">Throw arrows into a pot to win prizes!</desc>
     </note>
-    <note category="Hands-On" image="https://placehold.co/600x400/f0f0f0/909090?text=Chopstick+Challenge">
+    <note category="Hands-On" image="https://www.majimelife.com.au/cdn/shop/articles/hand-holding-chopsticks_5be1a063-7397-49eb-8d0d-0a3cf62a84d5.jpg?v=1710994803&width=1500">
       <title xml:lang="zh-Hans">筷子比赛</title>
       <title xml:lang="en">Chopstick Challenge</title>
       <desc xml:lang="zh-Hans">30秒夹糖果，比谁多谁赢。</desc>
       <desc xml:lang="en">Players pick candies in 30 seconds; the winner wins prizes!</desc>
     </note>
-    <note category="Hands-On" image="https://placehold.co/600x400/f0f0f0/909090?text=Painted+Fan">
+    <note category="Hands-On" image="https://jcdn.xhby.net/dams-res/editing/image/202406/16/2DMXGH6nCxmUPLZw422CufJ9.jpeg?image_process=resize,w_800/format,jpg">
       <title xml:lang="zh-Hans">漆扇</title>
       <title xml:lang="en">Painted Fan</title>
       <desc xml:lang="zh-Hans">DIY彩绘或装饰纸扇，做专属小扇子。</desc>
       <desc xml:lang="en">Decorate a paper fan with colors and patterns.</desc>
     </note>
-    <note category="Hands-On" image="https://placehold.co/600x400/f0f0f0/909090?text=Handicrafts">
+    <note category="Hands-On" image="https://images.unsplash.com/photo-1620140036708-455ed5c0426a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">中国手工</title>
       <title xml:lang="en">Chinese Handicrafts</title>
       <desc xml:lang="zh-Hans">制作灯笼、拉拉龙或漆扇。</desc>
       <desc xml:lang="en">Make lanterns, pull dragons, or painted fans.</desc>
     </note>
-    <note category="Hands-On" image="https://placehold.co/600x400/f0f0f0/909090?text=Traditional+Costume">
+    <note category="Hands-On" image="https://images.unsplash.com/photo-1524548209323-6fb4a0d4a4a3?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
       <title xml:lang="zh-Hans">传统服装</title>
       <title xml:lang="en">Traditional Costume</title>
       <desc xml:lang="zh-Hans">试穿中国传统服装，拍美照。</desc>
