@@ -433,16 +433,10 @@ section {
   }
 }
 
-/* --- Flexible Image Styling --- */
-/* The HTML uses an inline style div, so #image-flex styles are placed here */
-
-/* Assuming this ID applies to the overall container, its padding is the vertical gap */
-#image-flex {
-  padding: 20vh 0; /* Controls vertical padding for the section content */
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* --- NEW Featured Image Container --- */
+.featured-image-container {
+    padding-top: 5vh; /* Replaces inline style for gap above image */
+    text-align: center;
 }
 
 .flex-fade-image {
