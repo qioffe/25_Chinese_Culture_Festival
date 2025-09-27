@@ -127,7 +127,10 @@ body.dark-mode::after {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  
+  /* MODIFIED: Default padding is 0 for edge-to-edge on mobile */
+  padding: 0; 
+  
   position: relative;
   z-index: 1;
 }
@@ -149,19 +152,19 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 2.5rem); /* ~32px to 40px */
+  font-size: clamp(2rem, 4vw, 2.5rem); 
   text-align: center;
 }
 
 h3 {
-  font-size: 1.375rem; /* 22px / 16px = 1.375rem */
+  font-size: 1.375rem; 
   line-height: 1.4;
 }
 
 h4 {
   font-family: var(--font-body);
-  font-weight: 600; /* Medium/Semi-bold weight */
-  font-size: 1rem; /* 16px */
+  font-weight: 600; 
+  font-size: 1rem; 
 }
 
 p {
@@ -259,7 +262,6 @@ section {
   position: relative;
 
   /* --- ADDITIONS FOR FADED EDGE --- */
-  /* Create a radial gradient mask to fade the edges */
   -webkit-mask-image: radial-gradient(
     circle at center,
     black 60%,
@@ -267,8 +269,8 @@ section {
   );
   mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
   
-  box-shadow: 0 0 40px rgba(var(--hue-primary), 80%, 50%, 0.3); /* Subtle accent glow */
-  transition: box-shadow 0.3s ease; /* Add transition for hover effect if desired */
+  box-shadow: 0 0 40px rgba(var(--hue-primary), 80%, 50%, 0.3); 
+  transition: box-shadow 0.3s ease; 
 }
 
 /* Optional: Add a stronger glow on hover for interactivity */
@@ -306,7 +308,7 @@ section {
 #hero h1 {
   color: hsl(var(--hue-secondary), 100%, 75%);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  margin-bottom: 2rem; /* Increased space below h1 */
+  margin-bottom: 2rem; 
 }
 
 #hero p {
@@ -341,19 +343,6 @@ section {
 
 .mobile-break {
     display: none;
-}
-
-/* --- Media Query for Mobile (max-width: 768px) --- */
-@media (max-width: 768px) {
-    .mobile-break {
-        display: block; /* Force H1 line break */
-    }
-    #hero h1 {
-        margin-bottom: 1.5rem; /* Reduced space on mobile */
-    }
-    .flex-fade-image {
-        max-width: 95vw; /* Make flexible image larger on mobile */
-    }
 }
 
 /* === Sponsor Logo Slider === */
@@ -445,8 +434,7 @@ section {
 }
 
 /* --- Flexible Image Styling --- */
-/* The HTML uses an inline style div, so #image-flex styles are placed here 
-   to control the image itself. */
+/* The HTML uses an inline style div, so #image-flex styles are placed here */
 
 /* Assuming this ID applies to the overall container, its padding is the vertical gap */
 #image-flex {
@@ -520,7 +508,7 @@ section {
 
 .bento-item.collapsible-map[open] {
   /* MODIFIED: Changed max-height to vh unit */
-  max-height: 60vh; /* Adjusted to 60vh for a more reasonable map size */
+  max-height: 60vh; 
 }
 
 .map-summary {
@@ -837,7 +825,20 @@ body.dark-mode .tag-btn.hands-on {
   padding: 12px 24px 24px;
 }
 
+@media (min-width: 769px) {
+    .wrap {
+        /* Re-introduce padding for desktop screens */
+        padding: 0 24px;
+    }
+}
+
 @media (max-width: 768px) {
+  /* ADDED: Apply padding to all children of .wrap that are NOT the logo slider */
+  .wrap > *:not(.logo-slider-wrapper) {
+      padding-left: 24px;
+      padding-right: 24px;
+  }
+    
   .card-header {
     flex-direction: column-reverse;
   }
@@ -853,6 +854,17 @@ body.dark-mode .tag-btn.hands-on {
     aspect-ratio: 16/9;
     margin-bottom: 12px;
     margin-left: 0;
+  }
+  
+  /* Existing Mobile Fixes */
+  .mobile-break {
+    display: block;
+  }
+  #hero h1 {
+    margin-bottom: 1.5rem;
+  }
+  .flex-fade-image {
+    max-width: 95vw;
   }
 }
 
