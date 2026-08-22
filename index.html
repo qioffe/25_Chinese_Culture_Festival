@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Harvest Moon Celebration — Miami Chinese Culture Festival</title>
 
+  <!-- Clean inline SVG favicon to prevent 404 error -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌕</text></svg>">
+
   <!-- Typographic Foundation: Bodoni Moda (Didot Titles/Digits) + Plus Jakarta Sans (Reading/Meta) + Noto Serif TC (Totems) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,7 +113,7 @@
       transform: translateY(-1px);
     }
 
-    /* Artwork Canvas Transform Scales */
+    /* Artwork Canvas Transform Scales (100% Original) */
     .stage-canvas { transform: translate(0px, -86px) scale(2.24); }
     .shufa-layer { transform: translate(0px, -140px) scale(0.96); }
     .tree-layer { transform: translate(10px, 70px) scale(1.10); }
@@ -137,7 +140,7 @@
     .curtain-blur-layer {
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      background: rgba(244, 237, 225, 0.96); /* Slightly more opaque to ensure absolute clarity */
+      background: rgba(244, 237, 225, 0.88);
       transition: opacity 0.3s ease;
     }
 
@@ -314,19 +317,19 @@
         <div class="w-full lg:col-span-12 flex items-center justify-between">
           <div class="w-full max-w-2xl overflow-hidden marquee-feather-mask h-12 flex items-center">
             <div class="marquee-track items-center gap-4 pr-4">
-              <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="MDC" />
-              <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="CLTA FL" />
-              <img src="./vendor26/WL.png" class="sponsor-monomark" alt="World Languages" />
-              <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="FIU ASU" />
-              <img src="./vendor26/aa.png" class="sponsor-monomark" alt="Asian American Board" />
-              <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="UM CSSA" />
+              <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="Partner" />
+              <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="Partner" />
+              <img src="./vendor26/WL.png" class="sponsor-monomark" alt="Partner" />
+              <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="Partner" />
+              <img src="./vendor26/aa.png" class="sponsor-monomark" alt="Partner" />
+              <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="Partner" />
               
-              <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="MDC" aria-hidden="true" />
-              <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="CLTA FL" aria-hidden="true" />
-              <img src="./vendor26/WL.png" class="sponsor-monomark" alt="World Languages" aria-hidden="true" />
-              <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="FIU ASU" aria-hidden="true" />
-              <img src="./vendor26/aa.png" class="sponsor-monomark" alt="Asian American Board" aria-hidden="true" />
-              <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="UM CSSA" aria-hidden="true" />
+              <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
+              <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
+              <img src="./vendor26/WL.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
+              <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
+              <img src="./vendor26/aa.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
+              <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
             </div>
           </div>
         </div>
@@ -402,6 +405,7 @@
 
           <div class="space-y-8 sm:space-y-10">
 
+            <!-- NODE 01: 1:00 PM MAIN STAGE PRODUCTION -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-3 h-[1.5px] bg-inkGold"></div>
@@ -439,6 +443,7 @@
               </div>
             </article>
 
+            <!-- NODE 02: 3:30 PM CALLIGRAPHY DEMONSTRATION -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-2.5 h-[1.5px] bg-inkJade/30"></div>
@@ -472,6 +477,7 @@
               </div>
             </article>
 
+            <!-- NODE 03: 4:00 PM TEA CEREMONY RITUAL -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-2.5 h-[1.5px] bg-inkJade/30"></div>
@@ -505,6 +511,7 @@
               </div>
             </article>
 
+            <!-- NODE 04: 4:30 PM FINALE & LANTERN GAMES -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-3 h-[1.5px] bg-inkGold"></div>
@@ -630,7 +637,7 @@
         <div id="roster-wrapper" class="lg:col-span-8 relative max-h-[360px] overflow-hidden transition-all duration-500 ease-in-out">
           
           <main id="xml-roster-container" class="flex flex-col divide-y divide-ruleLine">
-            <!-- Loading placeholder initially blanked so no text bleeds under cover -->
+            <!-- Blanked so no loading text bleeds underneath the veil -->
           </main>
 
           <!-- 2026 Poetic Curtain Overlay -->
@@ -679,8 +686,10 @@
        ========================================================================= -->
   <footer id="colophon" class="w-full max-w-[1920px] mx-auto p-5 sm:p-8 md:p-12 lg:p-16 border-t border-ruleLine font-sans text-inkJade selection:bg-inkJade selection:text-paperBase">
     
+    <!-- Top Row: Editorial Colophon & Quick Links -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10 sm:pb-12 border-b border-ruleLine">
       
+      <!-- Brand & Mission (Col 1-5) -->
       <div class="md:col-span-5 flex flex-col items-start space-y-3">
         <span class="font-code font-bold text-[10px] sm:text-xs text-inkGold tracking-widest uppercase">
           ANNUAL CULTURAL INITIATIVE
@@ -693,6 +702,7 @@
         </p>
       </div>
 
+      <!-- Navigation & Waypoints (Col 6-8) -->
       <div class="md:col-span-3 flex flex-col space-y-2.5">
         <span class="font-code font-bold text-[10px] text-inkGold tracking-widest uppercase">
           WAYPOINTS
@@ -705,6 +715,7 @@
         </nav>
       </div>
 
+      <!-- Institutional Coordinates (Col 9-12) -->
       <div class="md:col-span-4 flex flex-col space-y-2.5">
         <span class="font-code font-bold text-[10px] text-inkGold tracking-widest uppercase">
           VENUE & CAMPUS
@@ -719,6 +730,7 @@
 
     </div>
 
+    <!-- Bottom Row: Copyright, Legal & Back to Top -->
     <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-inkJade/60">
       <div class="flex items-center gap-2 text-center sm:text-left">
         <span>© 2026 Miami Chinese Culture Festival. All rights reserved.</span>
@@ -847,7 +859,6 @@
       const container = document.getElementById('xml-roster-container');
 
       if (mode === 'archive') {
-        // Load Archive Data
         try {
           await fetchAndRenderXML(URL_2025_ARCHIVE);
         } catch(e) {}
@@ -863,7 +874,7 @@
         document.getElementById('side-subhead').innerText = '2025 ARCHIVE';
         document.getElementById('side-main-title').innerText = 'Past Repertoire';
       } else {
-        if (container) container.innerHTML = ''; // Keep underneath clean so no overlap occurs
+        if (container) container.innerHTML = '';
 
         rosterWrapper.classList.add('max-h-[360px]', 'overflow-hidden');
         rosterWrapper.classList.remove('max-h-none', 'overflow-visible');
@@ -917,7 +928,6 @@
         rosterWrapper.classList.add('max-h-none', 'overflow-visible');
         topToggleBtn.classList.add('hidden');
       } catch (err) {
-        // If 2026 is unreleased, clear container so no background loading text bleeds through
         if (container) container.innerHTML = '';
         if (cover) cover.classList.remove('hidden');
       }
