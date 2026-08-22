@@ -103,7 +103,7 @@ async function fetchAndRenderXML(xmlUrl) {
 /**
  * Toggle between the 2026 preview and the 2025 archive
  */
-function setSeasonState(mode) {
+async function setSeasonState(mode) {
   currentMode = mode;
   const cover = document.getElementById('upcoming-cover');
   const rosterWrapper = document.getElementById('roster-wrapper');
@@ -112,33 +112,56 @@ function setSeasonState(mode) {
   const sideArchiveBadge = document.getElementById('side-archive-badge');
 
   if (mode === 'archive') {
-    rosterWrapper.classList.remove('max-h-[360px]', 'overflow-hidden');
-    rosterWrapper.classList.add('max-h-none', 'overflow-visible');
-    if (cover) cover.classList.add('hidden');
+    // Ensure XML is loaded if not already rendered
+    const container = document.getElementById('xml-roster-container');
+    if (!container.querySelector('article')) {
+      try {
+        await fetchAndRenderXML(URL_2025_ARCHIVE);
+      } catch (e) {
+        console.error("Archive loading error:", e);
+      }
+    }
 
-    highlightBanner.classList.remove('hidden');
-    sideArchiveBadge.classList.remove('hidden');
-    topToggleBtn.innerText = '← Return to 2026 Preview';
+    if (rosterWrapper) {
+      rosterWrapper.classList.remove('overflow-hidden');
+    }
+    if (cover) {
+      cover.classList.add('hidden');
+    }
 
-    document.getElementById('side-subhead').innerText = '2025 ARCHIVE';
-    document.getElementById('side-main-title').innerText = 'Past Repertoire';
+    if (highlightBanner) highlightBanner.classList.remove('hidden');
+    if (sideArchiveBadge) sideArchiveBadge.classList.remove('hidden');
+    if (topToggleBtn) topToggleBtn.innerText = '← Return to 2026 Preview';
+
+    const subhead = document.getElementById('side-subhead');
+    const mainTitle = document.getElementById('side-main-title');
+    if (subhead) subhead.innerText = '2025 ARCHIVE';
+    if (mainTitle) mainTitle.innerText = 'Past Repertoire';
   } else {
-    rosterWrapper.classList.add('max-h-[360px]', 'overflow-hidden');
-    rosterWrapper.classList.remove('max-h-none', 'overflow-visible');
-    if (cover) cover.classList.remove('hidden');
+    if (rosterWrapper) {
+      rosterWrapper.classList.add('overflow-hidden');
+    }
+    if (cover) {
+      cover.classList.remove('hidden');
+    }
 
-    highlightBanner.classList.add('hidden');
-    sideArchiveBadge.classList.add('hidden');
-    topToggleBtn.innerText = 'View 2025 Repertoire';
+    if (highlightBanner) highlightBanner.classList.add('hidden');
+    if (sideArchiveBadge) sideArchiveBadge.classList.add('hidden');
+    if (topToggleBtn) topToggleBtn.innerText = 'View 2025 Repertoire';
 
-    document.getElementById('side-subhead').innerText = 'HOUSE PROGRAMME';
-    document.getElementById('side-main-title').innerText = 'Order of Performance';
+    const subhead = document.getElementById('side-subhead');
+    const mainTitle = document.getElementById('side-main-title');
+    if (subhead) subhead.innerText = 'HOUSE PROGRAMME';
+    if (mainTitle) mainTitle.innerText = 'Order of Performance';
   }
 }
 
 function toggleSeasonView() {
-  if (currentMode === 'upcoming') setSeasonState('archive');
-  else setSeasonState('upcoming');
+  if (currentMode === 'upcoming') {
+    setSeasonState('archive');
+  } else {
+    setSeasonState('upcoming');
+  }
 }
 
 /**
@@ -152,19 +175,21 @@ async function shareProgrammeSection() {
   };
 
   const shareBtn = document.getElementById('share-section-btn');
-  const originalText = shareBtn.innerText;
+  const originalText = shareBtn ? shareBtn.innerText : '↗ Share';
 
   if (navigator.share) {
     try { 
       await navigator.share(shareData); 
     } catch (err) {
-      // User cancelled share
+      // User cancelled
     }
   } else {
     try {
       await navigator.clipboard.writeText(shareData.url);
-      shareBtn.innerText = '✓ Link Copied';
-      setTimeout(() => { shareBtn.innerText = originalText; }, 2000);
+      if (shareBtn) {
+        shareBtn.innerText = '✓ Link Copied';
+        setTimeout(() => { shareBtn.innerText = originalText; }, 2000);
+      }
     } catch (clipErr) {
       // Fallback
     }
@@ -182,14 +207,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const count = await fetchAndRenderXML(URL_2026);
     if (cover) cover.remove();
-    rosterWrapper.classList.remove('max-h-[360px]', 'overflow-hidden');
-    rosterWrapper.classList.add('max-h-none', 'overflow-visible');
-    topToggleBtn.classList.add('hidden');
+    if (rosterWrapper) rosterWrapper.classList.remove('overflow-hidden');
+    if (topToggleBtn) topToggleBtn.classList.add('hidden');
   } catch (err) {
+    // 2026 data unavailable -> Pre-fetch 2025 archive in background so preview button works immediately
     try {
       await fetchAndRenderXML(URL_2025_ARCHIVE);
     } catch (archiveErr) {
-      // Keep offline/placeholder state
+      console.warn("Programme offline");
     }
   }
 });
