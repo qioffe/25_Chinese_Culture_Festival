@@ -42,38 +42,77 @@
 }
 
 /* ==========================================================================
+   Stage Artwork Canvas (Contain within Hero bounds)
+   ========================================================================== */
+.stage-canvas { 
+  transform: translate(0px, -20px) scale(1.15); 
+  transform-origin: center center;
+}
+.shufa-layer { 
+  transform: translate(0px, -60px) scale(0.96); 
+}
+.tree-layer { 
+  transform: translate(10px, 30px) scale(1.05); 
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .stage-canvas { transform: translate(0px, -10px) scale(1.25); }
+  .shufa-layer { transform: translate(0px, -80px) scale(0.98); }
+  .tree-layer { transform: translate(12px, 40px) scale(1.10); }
+}
+
+@media (min-width: 1024px) {
+  .stage-canvas { transform: translate(0px, 0px) scale(1.35); }
+  .shufa-layer { transform: translate(0px, -100px) scale(1.00); }
+  .tree-layer { transform: translate(16px, 50px) scale(1.15); }
+}
+
+/* ==========================================================================
    Seamless Infinite Sponsor Marquee
    ========================================================================== */
 @keyframes marquee-seamless {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 52px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .marquee-track {
   display: flex;
+  align-items: center;
   width: max-content;
-  animation: marquee-seamless 20s linear infinite;
+  flex-wrap: nowrap;
+  gap: 3.5rem;
+  animation: marquee-seamless 22s linear infinite;
+  will-change: transform;
 }
 
 .marquee-track:hover {
   animation-play-state: paused;
 }
 
-.marquee-feather-mask {
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 6%, black 14%, black 86%, rgba(0,0,0,0.3) 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 6%, black 14%, black 86%, rgba(0,0,0,0.3) 94%, transparent 100%);
-}
-
 .sponsor-monomark {
-  width: 200px;
-  height: 44px;
+  height: 36px;
+  width: auto;
+  max-width: 160px;
   object-fit: contain;
   filter: grayscale(100%) contrast(140%) brightness(0.22);
   mix-blend-mode: multiply;
   opacity: 0.75;
   flex-shrink: 0;
+  display: block;
 }
-
 /* ==========================================================================
    Tactile Physical Buttons
    ========================================================================== */
