@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Harvest Moon Celebration — Miami Chinese Culture Festival</title>
 
-  <!-- Typographic Foundation: Bodoni Moda (Didot Titles/Digits) + Plus Jakarta Sans (Reading/Meta) + Noto Serif TC (Totems) -->
+  <!-- Typographic Foundation -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Noto+Serif+TC:wght@500;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
@@ -35,13 +35,12 @@
   </script>
 
   <style>
-    /* Tactile Paper Grain Surface */
+    /* Paper Texture */
     .paper-texture {
       background-color: #f4ede1;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
     }
 
-    /* Restrained Static Jade Ink */
     .static-jade-ink {
       background: linear-gradient(140deg, #022b1c 0%, #034f32 48%, #011d13 100%);
       -webkit-background-clip: text;
@@ -54,7 +53,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Vertical Cultural Totem */
     .vertical-totem {
       writing-mode: vertical-rl;
       text-orientation: upright;
@@ -63,45 +61,50 @@
       user-select: none;
     }
 
-    /* Ambient Hero Atmosphere */
     .atmospheric-ink-halo {
       background: radial-gradient(circle at 50% 50%, rgba(255, 238, 175, 0.42) 0%, rgba(235, 205, 125, 0.22) 38%, rgba(140, 195, 165, 0.14) 64%, rgba(244, 237, 225, 0) 82%);
       mix-blend-mode: multiply;
       filter: blur(65px);
     }
 
-    /* Seamless Infinite Marquee */
+    /* Fixed Seamless Marquee */
     @keyframes marquee-seamless {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-50%, 0, 0); }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     }
 
     .marquee-track {
-      display: flex;
+      display: inline-flex;
+      align-items: center;
       width: max-content;
-      animation: marquee-seamless 20s linear infinite;
+      animation: marquee-seamless 25s linear infinite;
     }
 
     .marquee-track:hover {
       animation-play-state: paused;
     }
 
-    .marquee-feather-mask {
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 6%, black 14%, black 86%, rgba(0,0,0,0.3) 94%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 6%, black 14%, black 86%, rgba(0,0,0,0.3) 94%, transparent 100%);
-    }
-
     .sponsor-monomark {
-      width: 200px;
-      height: 44px;
+      height: 38px;
+      max-width: 160px;
       object-fit: contain;
-      filter: grayscale(100%) contrast(140%) brightness(0.22);
+      filter: grayscale(100%) contrast(140%) brightness(0.25);
       mix-blend-mode: multiply;
-      opacity: 0.75;
+      opacity: 0.8;
+      margin: 0 1.25rem;
+      display: inline-block;
       flex-shrink: 0;
     }
 
-    /* Tactile Physical Button */
     .btn-physical-jade {
       box-shadow: 0 2px 0 #021a10, 0 6px 16px -3px rgba(6, 45, 31, 0.22);
       transition: background-color 0.15s ease, transform 0.15s ease;
@@ -110,7 +113,6 @@
       transform: translateY(-1px);
     }
 
-    /* Artwork Canvas Transform Scales */
     .stage-canvas { transform: translate(0px, -86px) scale(2.24); }
     .shufa-layer { transform: translate(0px, -140px) scale(0.96); }
     .tree-layer { transform: translate(10px, 70px) scale(1.10); }
@@ -133,43 +135,20 @@
       transform-origin: 500px 425px;
     }
 
-    /* Preview Curtain Layer */
+    /* Fixed Non-Overlapping Curtain Card */
     .curtain-blur-layer {
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(244, 237, 225, 0.88);
-      transition: opacity 0.3s ease;
-    }
-
-    .curtain-card-inner {
-      background: rgba(254, 252, 248, 0.98);
-      border: 1px solid rgba(162, 126, 54, 0.45);
-      box-shadow: 0 12px 32px -8px rgba(6, 45, 31, 0.14);
-    }
-
-    .archive-view-mode #xml-roster-container {
-      filter: sepia(12%) saturate(90%);
-      opacity: 0.88;
-    }
-
-    @keyframes pulseLoad {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.8; }
-    }
-    .loading-pulse {
-      animation: pulseLoad 1.5s infinite ease-in-out;
+      background: #f4ede1; /* Fully opaque base stops underlying text from leaking through */
+      border: 1px solid rgba(162, 126, 54, 0.35);
+      box-shadow: 0 8px 30px -6px rgba(6, 45, 31, 0.08);
     }
   </style>
 </head>
 
 <body class="paper-texture min-h-screen w-full overflow-x-hidden text-inkJade antialiased selection:bg-inkJade selection:text-paperBase font-sans">
 
-  <!-- =========================================================================
-       SECTION 1: FESTIVAL GATHERING (HERO MONUMENT)
-       ========================================================================= -->
+  <!-- ================= SECTION 1: HERO ================= -->
   <section id="gathering" class="min-h-[100dvh] w-full max-w-[1920px] mx-auto flex flex-col justify-between p-5 sm:p-8 md:p-12 lg:p-16 relative">
 
-    <!-- Unified Master Masthead: 01 -->
     <header class="relative z-30 flex items-end justify-between w-full border-b border-ruleLine pb-4 sm:pb-6">
       <div class="flex flex-col">
         <span class="font-code font-bold text-[10px] sm:text-xs text-inkGold tracking-widest uppercase">
@@ -187,14 +166,11 @@
       </div>
     </header>
 
-    <!-- Stage Art & Typographic Hero -->
     <main class="relative w-full my-auto py-6 sm:py-10 flex-1 flex flex-col justify-center">
       <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 lg:gap-4 items-center lg:items-end">
         
-        <!-- Left Editorial Payload (Col 1-5) -->
         <div class="w-full lg:col-span-5 flex flex-col items-start z-20 pt-2 lg:pt-16 pb-2">
           
-          <!-- Master Title + Totem 01: 貳零貳六 -->
           <div class="flex items-start gap-4 sm:gap-6 mb-6 sm:mb-8">
             <h1 class="flex flex-col font-didot font-bold text-[40px] xs:text-[48px] sm:text-6xl md:text-7xl xl:text-[84px] leading-[0.88] tracking-tight static-jade-ink">
               <span>Harvest Moon</span>
@@ -209,7 +185,6 @@
             </div>
           </div>
 
-          <!-- Chrono Metric Ladder with Bodoni Digits -->
           <div class="flex flex-nowrap items-center gap-4 sm:gap-7 py-3.5 sm:py-4 border-y border-ruleLine w-full max-w-lg mb-6 sm:mb-8 select-none">
             <div class="font-didot text-3xl sm:text-4xl lg:text-[46px] font-bold leading-none title-gradient-muted tracking-tight shrink-0">
               10/03
@@ -234,10 +209,9 @@
             An immersive gathering celebrating mid-autumn heritage with live folk performing arts, authentic culinary traditions, and local artisan crafts.
           </p>
 
-          <!-- Primary Actions -->
           <div class="flex items-center gap-3 sm:gap-4 w-full sm:w-auto font-sans">
             <a href="#programme" class="btn-physical-jade px-7 sm:px-9 py-3 bg-inkJade hover:bg-inkJadeDeep text-paperBase font-bold text-xs sm:text-sm tracking-wider uppercase rounded-full text-center">
-              RSVP For Free
+              View Repertoire
             </a>
             <a href="#itinerary" class="px-6 sm:px-8 py-3 border border-inkJade/25 hover:border-inkJade text-inkJade/80 hover:text-inkJade font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-full text-center transition-colors">
               Times Guide ↓
@@ -246,7 +220,6 @@
 
         </div>
 
-        <!-- Right Celestial Canvas (Col 6-12) -->
         <div class="w-full lg:col-span-7 relative flex items-center justify-center lg:justify-end min-h-[320px] sm:min-h-[460px] lg:min-h-[720px] pointer-events-none">
           <div class="stage-canvas w-full max-w-[400px] sm:max-w-[540px] lg:max-w-[1300px] aspect-[1340/940] flex items-center justify-center">
             
@@ -308,40 +281,34 @@
       </div>
     </main>
 
-    <!-- Sponsor Marquee Footer -->
-    <footer class="relative z-30 w-full border-t border-ruleLine pt-4 sm:pt-5">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-        <div class="w-full lg:col-span-12 flex items-center justify-between">
-          <div class="w-full max-w-2xl overflow-hidden marquee-feather-mask h-12 flex items-center">
-            <div class="marquee-track items-center gap-4 pr-4">
-              <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="MDC" onerror="this.style.display='none'" />
-              <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="CLTA FL" onerror="this.style.display='none'" />
-              <img src="./vendor26/WL.png" class="sponsor-monomark" alt="World Languages" onerror="this.style.display='none'" />
-              <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="FIU ASU" onerror="this.style.display='none'" />
-              <img src="./vendor26/aa.png" class="sponsor-monomark" alt="Asian American Advisory Board" onerror="this.style.display='none'" />
-              <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="UM CSSA" onerror="this.style.display='none'" />
-              
-              <!-- Loop Clones -->
-              <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="" aria-hidden="true" onerror="this.style.display='none'" />
-              <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="" aria-hidden="true" onerror="this.style.display='none'" />
-              <img src="./vendor26/WL.png" class="sponsor-monomark" alt="" aria-hidden="true" onerror="this.style.display='none'" />
-              <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="" aria-hidden="true" onerror="this.style.display='none'" />
-              <img src="./vendor26/aa.png" class="sponsor-monomark" alt="" aria-hidden="true" onerror="this.style.display='none'" />
-              <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="" aria-hidden="true" onerror="this.style.display='none'" />
-            </div>
-          </div>
+    <!-- Robust Infinite Marquee Track -->
+    <footer class="relative z-30 w-full border-t border-ruleLine pt-4 sm:pt-5 overflow-hidden">
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <!-- Set 1 -->
+          <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="MDC" />
+          <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="CLTA FL" />
+          <img src="./vendor26/WL.png" class="sponsor-monomark" alt="World Languages" />
+          <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="FIU ASU" />
+          <img src="./vendor26/aa.png" class="sponsor-monomark" alt="Asian American Board" />
+          <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="UM CSSA" />
+
+          <!-- Set 2 (Duplicate for seamless loop) -->
+          <img src="./vendor26/mdc_.png" class="sponsor-monomark" alt="MDC" aria-hidden="true" />
+          <img src="./vendor26/clta_fl.png" class="sponsor-monomark" alt="CLTA FL" aria-hidden="true" />
+          <img src="./vendor26/WL.png" class="sponsor-monomark" alt="World Languages" aria-hidden="true" />
+          <img src="./vendor26/fiu_asu.png" class="sponsor-monomark" alt="FIU ASU" aria-hidden="true" />
+          <img src="./vendor26/aa.png" class="sponsor-monomark" alt="Asian American Board" aria-hidden="true" />
+          <img src="./vendor26/cssaUM.png" class="sponsor-monomark" alt="UM CSSA" aria-hidden="true" />
         </div>
       </div>
     </footer>
 
   </section>
 
-  <!-- =========================================================================
-       SECTION 2: CAMPUS ITINERARY (LEFT-ANCHORED CHRONO RUNWAY)
-       ========================================================================= -->
+  <!-- ================= SECTION 2: ITINERARY ================= -->
   <section id="itinerary" class="min-h-[100dvh] w-full max-w-[1920px] mx-auto flex flex-col justify-between p-5 sm:p-8 md:p-12 lg:p-16 border-t border-ruleLine relative scroll-mt-6">
 
-    <!-- Unified Master Masthead: 02 -->
     <header class="w-full flex items-end justify-between border-b border-ruleLine pb-4 sm:pb-6">
       <div class="flex flex-col">
         <span class="font-code font-bold text-[10px] sm:text-xs text-inkGold tracking-widest uppercase">
@@ -357,13 +324,10 @@
       </div>
     </header>
 
-    <!-- Two-Column Physical Folio Architecture -->
     <div class="w-full my-auto py-8 sm:py-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
         
-        <!-- LEFT RAIL: CLEAN ALL-DAY GROUND PILLAR (Col 1-4) -->
         <aside class="lg:col-span-4 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-ruleLine pb-8 lg:pb-0 lg:pr-8 lg:sticky lg:top-8 self-start space-y-6">
-          
           <div class="space-y-6">
             <div class="flex items-baseline gap-3.5 select-none">
               <div class="flex flex-col font-didot font-bold text-3xl sm:text-4xl text-inkJade leading-none tracking-tight">
@@ -393,23 +357,17 @@
           <div class="pt-4 font-sans text-xs text-inkJade/70">
             <span class="font-medium text-inkGold">The Courtyards // Open Continuous Access</span>
           </div>
-
         </aside>
 
-        <!-- RIGHT SPAN: CONTINUOUS VERTICAL CHRONO-SPINE (Col 5-12) -->
         <div class="lg:col-span-8 relative pl-6 sm:pl-10">
-          
-          <!-- Continuous Vertical Spine Hairline -->
           <div class="absolute left-0 top-3 bottom-3 w-[1.5px] bg-inkJade/15"></div>
 
           <div class="space-y-8 sm:space-y-10">
 
-            <!-- NODE 01: 1:00 PM MAIN STAGE PRODUCTION -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-3 h-[1.5px] bg-inkGold"></div>
               </div>
-
               <div class="flex-1 space-y-1">
                 <div class="flex flex-wrap items-baseline justify-between gap-2 pb-1">
                   <div class="flex items-center gap-3">
@@ -422,11 +380,8 @@
                       STAGE PRODUCTION
                     </span>
                   </div>
-                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">
-                    Main Pavilion // Seated
-                  </span>
+                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">Main Pavilion // Seated</span>
                 </div>
-
                 <div class="pt-1 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
                   <h4 class="font-didot font-bold text-lg sm:text-xl text-inkJade tracking-tight">
                     Legend of the <span class="italic font-medium">Harvest Moon</span>
@@ -442,12 +397,10 @@
               </div>
             </article>
 
-            <!-- NODE 02: 3:30 PM CALLIGRAPHY DEMONSTRATION -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-2.5 h-[1.5px] bg-inkJade/30"></div>
               </div>
-
               <div class="flex-1 space-y-1">
                 <div class="flex flex-wrap items-baseline justify-between gap-2 pb-1">
                   <div class="flex items-center gap-3">
@@ -460,11 +413,8 @@
                       SCHOLAR SHOWCASE
                     </span>
                   </div>
-                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">
-                    The Promenade
-                  </span>
+                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">The Promenade</span>
                 </div>
-
                 <div class="pt-1">
                   <h4 class="font-didot font-bold text-base sm:text-lg text-inkJade tracking-tight">
                     Ink & Lunar Whispers: <span class="italic font-medium">Giant Brush Calligraphy</span>
@@ -476,12 +426,10 @@
               </div>
             </article>
 
-            <!-- NODE 03: 4:00 PM TEA CEREMONY RITUAL -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-2.5 h-[1.5px] bg-inkJade/30"></div>
               </div>
-
               <div class="flex-1 space-y-1">
                 <div class="flex flex-wrap items-baseline justify-between gap-2 pb-1">
                   <div class="flex items-center gap-3">
@@ -494,11 +442,8 @@
                       TASTING RITUAL
                     </span>
                   </div>
-                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">
-                    Tea Pavilion
-                  </span>
+                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">Tea Pavilion</span>
                 </div>
-
                 <div class="pt-1">
                   <h4 class="font-didot font-bold text-base sm:text-lg text-inkJade tracking-tight">
                     The Imperial Tea Experience: <span class="italic font-medium">Gongfu Ritual</span>
@@ -510,12 +455,10 @@
               </div>
             </article>
 
-            <!-- NODE 04: 4:30 PM FINALE & LANTERN GAMES -->
             <article class="relative flex items-start gap-4 sm:gap-6">
               <div class="absolute -left-6 sm:-left-10 top-2 flex items-center">
                 <div class="w-3 h-[1.5px] bg-inkGold"></div>
               </div>
-
               <div class="flex-1 space-y-1">
                 <div class="flex flex-wrap items-baseline justify-between gap-2 pb-1">
                   <div class="flex items-center gap-3">
@@ -528,11 +471,8 @@
                       FESTIVAL FINALE
                     </span>
                   </div>
-                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">
-                    Central Quad
-                  </span>
+                  <span class="font-sans text-[11px] text-inkJade/60 font-medium">Central Quad</span>
                 </div>
-
                 <div class="pt-1">
                   <h4 class="font-didot font-bold text-base sm:text-lg text-inkJade tracking-tight">
                     Palace Games & <span class="italic font-medium">Lunar Finale Salute</span>
@@ -545,7 +485,6 @@
             </article>
 
           </div>
-
         </div>
 
       </div>
@@ -553,12 +492,9 @@
 
   </section>
 
-  <!-- =========================================================================
-       SECTION 3: HOUSE REPERTOIRE (AUDITORIUM ARCHIVAL FOLIO)
-       ========================================================================= -->
+  <!-- ================= SECTION 3: REPERTOIRE ================= -->
   <section id="programme" class="min-h-[100dvh] w-full max-w-[1920px] mx-auto flex flex-col justify-between p-5 sm:p-8 md:p-12 lg:p-16 border-t border-ruleLine relative scroll-mt-6">
 
-    <!-- Unified Master Masthead: 03 -->
     <header class="w-full flex items-end justify-between border-b border-ruleLine pb-4 sm:pb-6">
       <div class="flex flex-col">
         <span class="font-code font-bold text-[10px] sm:text-xs text-inkGold tracking-widest uppercase">
@@ -580,7 +516,6 @@
       </div>
     </header>
 
-    <!-- Highlighted Archive Banner -->
     <div id="archive-highlight-banner" class="hidden bg-inkGold/10 py-2.5 px-4 my-3 flex flex-col sm:flex-row items-center justify-between gap-3 font-sans rounded-md">
       <div class="flex items-center gap-2 text-center sm:text-left">
         <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-inkGold/20 text-inkGold font-bold text-xs shrink-0">!</span>
@@ -593,11 +528,9 @@
       </button>
     </div>
 
-    <!-- Integrated Two-Column Folio Body -->
     <div class="w-full my-auto py-8 sm:py-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
         
-        <!-- Left Folio Rail: Totem 03 (節目) (Col 1-4) -->
         <aside class="lg:col-span-4 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-ruleLine pb-8 lg:pb-0 lg:pr-8 lg:sticky lg:top-8 self-start space-y-6">
           <div class="flex items-start gap-4">
             <div class="font-serifSc font-black text-4xl sm:text-5xl vertical-totem text-inkJade leading-tight shrink-0 pt-0.5">
@@ -621,7 +554,6 @@
             </div>
           </div>
 
-          <!-- Consolidated Venue & Access Notice -->
           <div class="pt-4 space-y-3 font-sans text-xs">
             <div>
               <span class="font-code font-bold text-[10px] text-inkGold uppercase tracking-wider block">PRODUCTION STAGING & ACCESS</span>
@@ -632,47 +564,39 @@
           </div>
         </aside>
 
-        <!-- Right Repertoire Stream: XML Flow (Col 5-12) -->
-        <div id="roster-wrapper" class="lg:col-span-8 relative max-h-[360px] overflow-hidden transition-all duration-500 ease-in-out">
+        <!-- Right Stream with Clean Mutually-Exclusive State Containers -->
+        <div id="roster-wrapper" class="lg:col-span-8 relative min-h-[300px] flex flex-col justify-center">
           
-          <main id="xml-roster-container" class="flex flex-col divide-y divide-ruleLine">
-            <div class="py-12 flex flex-col items-center justify-center text-center loading-pulse">
-              <span class="font-code text-xs font-bold tracking-widest text-inkGold uppercase block mb-1">CONNECTING TO REPERTOIRE</span>
-              <span class="font-sans text-sm text-inkJade/60 italic">Loading performance acts...</span>
-            </div>
-          </main>
+          <!-- State A: Active XML List Container -->
+          <main id="xml-roster-container" class="hidden flex-col divide-y divide-ruleLine w-full"></main>
 
-          <!-- 2026 Poetic Curtain Overlay -->
-          <div id="upcoming-cover" class="curtain-blur-layer absolute inset-0 z-30 flex items-center justify-center p-4">
-            <div class="curtain-card-inner relative z-10 p-6 sm:p-8 max-w-md w-full text-center flex flex-col items-center gap-3">
-              
-              <span class="font-code text-[10px] font-bold tracking-widest text-inkGold uppercase bg-inkGold/10 px-3 py-0.5 border border-inkGold/25 rounded-full">
-                2026 SEASON REPERTOIRE
-              </span>
-              
-              <div class="space-y-0.5">
-                <h4 class="font-didot font-bold text-xl sm:text-2xl text-inkJade tracking-tight">
-                  Repertoire Unveiling Soon
-                </h4>
-                <p class="font-serifSc font-semibold text-xs text-inkJade/70 tracking-widest mt-1">
-                  新歲曲目 · 敬請期待
-                </p>
-              </div>
-
-              <p class="font-sans text-xs text-inkJade/75 font-normal leading-relaxed px-2">
-                The 2026 stage order of performance is currently being finalized. You may preview the previous festival repertoire below.
+          <!-- State B: 2026 Preview Card (Never overlaps underlying text) -->
+          <div id="upcoming-cover" class="curtain-blur-layer p-8 sm:p-10 w-full text-center flex flex-col items-center gap-4 rounded-xl">
+            <span class="font-code text-[10px] font-bold tracking-widest text-inkGold uppercase bg-inkGold/10 px-3 py-0.5 border border-inkGold/25 rounded-full">
+              2026 SEASON REPERTOIRE
+            </span>
+            
+            <div class="space-y-1">
+              <h4 class="font-didot font-bold text-2xl sm:text-3xl text-inkJade tracking-tight">
+                Repertoire Unveiling Soon
+              </h4>
+              <p class="font-serifSc font-semibold text-xs text-inkJade/70 tracking-widest mt-1">
+                新歲曲目 · 敬請期待
               </p>
+            </div>
 
-              <div class="flex items-center justify-center gap-4 w-full mt-2 pt-3 font-sans text-xs">
-                <button type="button" onclick="setSeasonState('archive')" class="font-bold text-inkJade hover:text-inkJadeDeep underline underline-offset-4 uppercase transition-colors cursor-pointer">
-                  Preview Past Archive
-                </button>
-                <span class="text-inkJade/30">•</span>
-                <a href="#gathering" class="font-bold text-inkGold hover:text-[#856325] underline underline-offset-4 uppercase transition-colors">
-                  Performer Inquiries →
-                </a>
-              </div>
+            <p class="font-sans text-xs sm:text-sm text-inkJade/75 font-normal leading-relaxed max-w-md">
+              The 2026 stage order of performance is currently being finalized. You may preview the past festival archive below.
+            </p>
 
+            <div class="flex items-center justify-center gap-4 w-full mt-2 pt-3 border-t border-ruleLine font-sans text-xs">
+              <button type="button" onclick="setSeasonState('archive')" class="font-bold text-inkJade hover:text-inkJadeDeep underline underline-offset-4 uppercase transition-colors cursor-pointer">
+                Preview Past Archive
+              </button>
+              <span class="text-inkJade/30">•</span>
+              <a href="#gathering" class="font-bold text-inkGold hover:text-[#856325] underline underline-offset-4 uppercase transition-colors">
+                Performer Inquiries →
+              </a>
             </div>
           </div>
 
@@ -683,15 +607,11 @@
 
   </section>
 
-  <!-- =========================================================================
-       FOOTER (CONTEMPORARY BROADSIDE COLOPHON)
-       ========================================================================= -->
+  <!-- ================= FOOTER ================= -->
   <footer id="colophon" class="w-full max-w-[1920px] mx-auto p-5 sm:p-8 md:p-12 lg:p-16 border-t border-ruleLine font-sans text-inkJade selection:bg-inkJade selection:text-paperBase">
     
-    <!-- Top Row: Editorial Colophon & Quick Links -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10 sm:pb-12 border-b border-ruleLine">
       
-      <!-- Brand & Mission (Col 1-5) -->
       <div class="md:col-span-5 flex flex-col items-start space-y-3">
         <span class="font-code font-bold text-[10px] sm:text-xs text-inkGold tracking-widest uppercase">
           ANNUAL CULTURAL INITIATIVE
@@ -704,7 +624,6 @@
         </p>
       </div>
 
-      <!-- Navigation & Waypoints (Col 6-8) -->
       <div class="md:col-span-3 flex flex-col space-y-2.5">
         <span class="font-code font-bold text-[10px] text-inkGold tracking-widest uppercase">
           WAYPOINTS
@@ -713,11 +632,9 @@
           <a href="#gathering" class="hover:text-inkGold transition-colors">01 // Celestial Gathering</a>
           <a href="#itinerary" class="hover:text-inkGold transition-colors">02 // Campus Itinerary</a>
           <a href="#programme" class="hover:text-inkGold transition-colors">03 // House Repertoire</a>
-          <a href="#programme" class="hover:text-inkGold transition-colors">RSVP Registration</a>
         </nav>
       </div>
 
-      <!-- Institutional Coordinates (Col 9-12) -->
       <div class="md:col-span-4 flex flex-col space-y-2.5">
         <span class="font-code font-bold text-[10px] text-inkGold tracking-widest uppercase">
           VENUE & CAMPUS
@@ -732,7 +649,6 @@
 
     </div>
 
-    <!-- Bottom Row: Copyright, Legal & Back to Top -->
     <div class="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-inkJade/60">
       <div class="flex items-center gap-2 text-center sm:text-left">
         <span>© 2026 Miami Chinese Culture Festival. All rights reserved.</span>
@@ -748,11 +664,8 @@
 
   </footer>
 
-  <!-- =========================================================================
-       DYNAMIC LOGIC ENGINE
-       ========================================================================= -->
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // Relative paths ensure native resolution on GitHub Pages
     const URL_2026 = './26_festivalData.xml';
     const URL_2025_ARCHIVE = './25_festivalData.xml';
 
@@ -822,21 +735,17 @@
 
         const rowHTML = `
           <article class="py-3.5 first:pt-0 flex items-start gap-3 min-w-0">
-            
-            <!-- Track 1: Chrono Stamp with Bodoni Digits -->
             <div class="flex items-baseline gap-1 shrink-0 pt-0.5 w-20 sm:w-24 select-none whitespace-nowrap">
               ${formattedTimeHtml}
               ${duration ? `<span class="font-sans font-medium text-[9.5px] text-inkJade/45 uppercase ml-auto pr-1">(${duration})</span>` : ''}
             </div>
 
-            <!-- Track 2: Cultural Totem -->
             ${genreZh ? `
               <div class="font-serifSc font-bold text-[11.5px] text-inkGold vertical-totem shrink-0 pt-1">
                 ${genreZh}
               </div>
             ` : ''}
 
-            <!-- Track 3: Narrative & Performer Payload (Plus Jakarta Sans) -->
             <div class="flex flex-col min-w-0 flex-1 gap-0.5 pl-1 font-sans">
               <div class="flex flex-wrap items-baseline gap-x-2">
                 ${titleEn ? `<h4 class="font-didot font-bold text-sm sm:text-base text-inkJade tracking-tight">${titleEn}</h4>` : ''}
@@ -844,11 +753,7 @@
                 ${genreEn ? `<span class="font-code text-[9.5px] text-inkGold font-bold uppercase tracking-wider">/ ${genreEn}</span>` : ''}
               </div>
 
-              ${performer ? `
-                <div class="text-xs text-inkJade/90 font-medium leading-snug">
-                  ${performer}
-                </div>
-              ` : ''}
+              ${performer ? `<div class="text-xs text-inkJade/90 font-medium leading-snug">${performer}</div>` : ''}
 
               ${(bioZh || bioEn) ? `
                 <div class="pt-0.5 flex flex-col gap-0.5 text-xs text-inkJade/70 font-normal leading-relaxed">
@@ -857,7 +762,6 @@
                 </div>
               ` : ''}
             </div>
-
           </article>
         `;
 
@@ -867,20 +771,26 @@
       return items.length;
     }
 
-    function setSeasonState(mode) {
+    async function setSeasonState(mode) {
       currentMode = mode;
       const cover = document.getElementById('upcoming-cover');
-      const rosterWrapper = document.getElementById('roster-wrapper');
+      const container = document.getElementById('xml-roster-container');
       const topToggleBtn = document.getElementById('top-nav-toggle-btn');
       const highlightBanner = document.getElementById('archive-highlight-banner');
       const sideArchiveBadge = document.getElementById('side-archive-badge');
 
       if (mode === 'archive') {
-        if (rosterWrapper) {
-          rosterWrapper.classList.remove('max-h-[360px]', 'overflow-hidden');
-          rosterWrapper.classList.add('max-h-none', 'overflow-visible');
-        }
         if (cover) cover.classList.add('hidden');
+        if (container) {
+          container.classList.remove('hidden');
+          container.classList.add('flex');
+        }
+
+        try {
+          await fetchAndRenderXML(URL_2025_ARCHIVE);
+        } catch (e) {
+          if (container) container.innerHTML = '<p class="py-8 text-center text-xs text-inkJade/60 italic">Archive dataset unavailable.</p>';
+        }
 
         if (highlightBanner) highlightBanner.classList.remove('hidden');
         if (sideArchiveBadge) sideArchiveBadge.classList.remove('hidden');
@@ -891,11 +801,11 @@
         if (subhead) subhead.innerText = 'PAST ARCHIVE';
         if (mainTitle) mainTitle.innerText = 'Past Repertoire';
       } else {
-        if (rosterWrapper) {
-          rosterWrapper.classList.add('max-h-[360px]', 'overflow-hidden');
-          rosterWrapper.classList.remove('max-h-none', 'overflow-visible');
-        }
         if (cover) cover.classList.remove('hidden');
+        if (container) {
+          container.classList.add('hidden');
+          container.classList.remove('flex');
+        }
 
         if (highlightBanner) highlightBanner.classList.add('hidden');
         if (sideArchiveBadge) sideArchiveBadge.classList.add('hidden');
@@ -947,35 +857,28 @@
 
     document.addEventListener("DOMContentLoaded", async () => {
       const cover = document.getElementById('upcoming-cover');
+      const container = document.getElementById('xml-roster-container');
       const topToggleBtn = document.getElementById('top-nav-toggle-btn');
-      const rosterWrapper = document.getElementById('roster-wrapper');
 
       try {
         await fetchAndRenderXML(URL_2026);
         if (cover) cover.classList.add('hidden');
-        if (rosterWrapper) {
-          rosterWrapper.classList.remove('max-h-[360px]', 'overflow-hidden');
-          rosterWrapper.classList.add('max-h-none', 'overflow-visible');
+        if (container) {
+          container.classList.remove('hidden');
+          container.classList.add('flex');
         }
         if (topToggleBtn) topToggleBtn.classList.add('hidden');
       } catch (err) {
-        try {
-          await fetchAndRenderXML(URL_2025_ARCHIVE);
-        } catch (archiveErr) {
-          const container = document.getElementById('xml-roster-container');
-          if (container) {
-            container.innerHTML = `
-              <div class="py-12 flex flex-col items-center justify-center text-center text-inkJade/60">
-                <span class="font-code text-xs font-bold tracking-widest text-inkGold uppercase block mb-1">REPERTOIRE NOTICE</span>
-                <span class="font-sans text-xs">Performance schedule is being prepared.</span>
-              </div>
-            `;
-          }
+        // 2026 data not ready: default cleanly to preview curtain state
+        if (cover) cover.classList.remove('hidden');
+        if (container) {
+          container.classList.add('hidden');
+          container.classList.remove('flex');
         }
       }
     });
 
-    // Subconscious Moon Parallax Scroll
+    // Parallax Moon
     const moonLayer = document.getElementById('moon-scroll-layer');
     const haloLayer = document.getElementById('halo-scroll-layer');
     let ticking = false;
