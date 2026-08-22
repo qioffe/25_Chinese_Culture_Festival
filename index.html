@@ -174,26 +174,24 @@
       </div>
     </main>
 
-    <footer class="relative z-30 w-full border-t border-ruleLine pt-4 sm:pt-5">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-        <div class="w-full lg:col-span-12 flex items-center justify-between">
-          <div class="w-full max-w-2xl overflow-hidden marquee-feather-mask h-12 flex items-center">
-            <div class="marquee-track items-center gap-4 pr-4">
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/mdc_.png" class="sponsor-monomark" alt="Partner" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/clta_fl.png" class="sponsor-monomark" alt="Partner" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/WL.png" class="sponsor-monomark" alt="Partner" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/fiu_asu.png" class="sponsor-monomark" alt="Partner" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/aa.png" class="sponsor-monomark" alt="Partner" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/cssaUM.png" class="sponsor-monomark" alt="Partner" />
-              
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/mdc_.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/clta_fl.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/WL.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/fiu_asu.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/aa.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
-              <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/cssaUM.png" class="sponsor-monomark" alt="Partner" aria-hidden="true" />
-            </div>
-          </div>
+    <!-- Seamless Fixed Marquee Footer -->
+    <footer class="relative z-30 w-full border-t border-ruleLine pt-4 sm:pt-5 overflow-hidden">
+      <div class="w-full max-w-4xl mx-auto overflow-hidden marquee-feather-mask">
+        <div class="marquee-track items-center gap-8">
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/mdc_.png" class="sponsor-monomark" alt="MDC" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/clta_fl.png" class="sponsor-monomark" alt="CLTA" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/WL.png" class="sponsor-monomark" alt="WL" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/fiu_asu.png" class="sponsor-monomark" alt="FIU ASU" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/aa.png" class="sponsor-monomark" alt="AA" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/cssaUM.png" class="sponsor-monomark" alt="UM CSSA" />
+
+          <!-- Duplicate Set for 100% Seamless Infinite Loop -->
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/mdc_.png" class="sponsor-monomark" alt="MDC" aria-hidden="true" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/clta_fl.png" class="sponsor-monomark" alt="CLTA" aria-hidden="true" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/WL.png" class="sponsor-monomark" alt="WL" aria-hidden="true" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/fiu_asu.png" class="sponsor-monomark" alt="FIU ASU" aria-hidden="true" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/aa.png" class="sponsor-monomark" alt="AA" aria-hidden="true" />
+          <img src="https://raw.githubusercontent.com/qioffe/Chinese_Culture_Festival/main/vendor26/cssaUM.png" class="sponsor-monomark" alt="UM CSSA" aria-hidden="true" />
         </div>
       </div>
     </footer>
@@ -476,7 +474,8 @@
           </div>
         </aside>
 
-        <div id="roster-wrapper" class="lg:col-span-8 relative max-h-[360px] overflow-hidden transition-all duration-500 ease-in-out">
+        <!-- Right Repertoire Stream Container -->
+        <div id="roster-wrapper" class="lg:col-span-8 relative min-h-[300px] overflow-hidden transition-all duration-500 ease-in-out">
           
           <main id="xml-roster-container" class="flex flex-col divide-y divide-ruleLine">
             <div class="py-12 flex flex-col items-center justify-center text-center loading-pulse">
@@ -485,6 +484,7 @@
             </div>
           </main>
 
+          <!-- 2026 Season Curtain -->
           <div id="upcoming-cover" class="curtain-blur-layer absolute inset-0 z-30 flex items-center justify-center p-4">
             <div class="curtain-card-inner relative z-10 p-6 sm:p-8 max-w-md w-full text-center flex flex-col items-center gap-3">
               <span class="font-code text-[10px] font-bold tracking-widest text-inkGold uppercase bg-inkGold/10 px-3 py-0.5 border border-inkGold/25 rounded-full">
@@ -524,7 +524,7 @@
   </section>
 
   <!-- =========================================================================
-       PLACEHOLDER FOOTER (CONTEMPORARY BROADSIDE COLOPHON)
+       FOOTER
        ========================================================================= -->
   <footer id="colophon" class="w-full max-w-[1920px] mx-auto p-5 sm:p-8 md:p-12 lg:p-16 border-t border-ruleLine font-sans text-inkJade selection:bg-inkJade selection:text-paperBase">
     
