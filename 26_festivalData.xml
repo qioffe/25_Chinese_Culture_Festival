@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<festival name="Harvest Moon Celebration 2026" venue="Main Quadrangle Stage">
+  <item number="1" time="1:00 PM" duration="12m" performer="Lee Koon Hung Kung Fu Association">
+    <genre xml:lang="zh-Hans">舞狮</genre>
+    <genre xml:lang="en">Lion Dance</genre>
+    <title xml:lang="zh-Hans">开场表演</title>
+    <title xml:lang="en">Opening Performance</title>
+  </item>
+  
+  <item number="2" time="1:12 PM" duration="13m" performer="Adina, Aviva, Oliver, Students from Centner Academy">
+    <genre xml:lang="zh-Hans">儿童歌舞</genre>
+    <genre xml:lang="en">Children’s Medley</genre>
+    <title xml:lang="zh-Hans">中秋节</title>
+    <title xml:lang="en">Mid‑Autumn Story + Bunny Dance</title>
+  </item>
+  
+  <item number="3" time="1:25 PM" duration="15m" performer="于洁 (Jie Yu)">
+    <genre xml:lang="zh-Hans">京剧</genre>
+    <genre xml:lang="en">Peking Opera</genre>
+    <title xml:lang="zh-Hans">长袖舞</title>
+    <title xml:lang="en">Long‑Sleeve Dance</title>
+    <bio xml:lang="zh-Hans">毕业于中国戏曲学院；国家一级京剧演员（湖北省京剧团），工武旦、刀马旦。</bio>
+    <bio xml:lang="en">Graduate of the National Academy of Chinese Theatre Arts; National Class‑One Peking Opera actress (Hubei Peking Opera Troupe), specializing in wudan and daomadan roles.</bio>
+  </item>
+  
+  <item number="4" time="1:40 PM" duration="15m" performer="桔子乐队：秦梓琪（Ziqi Qin）小提琴 · Byron Liu（刘沛然）钢琴 · Adriano Carvalho (何适）大提琴 · Jingxuan Zhou（周婧瑄）长笛">
+    <genre xml:lang="zh-Hans">室内乐</genre>
+    <genre xml:lang="en">Chamber Music</genre>
+    <title xml:lang="zh-Hans">梁祝 / 茉莉花</title>
+    <title xml:lang="en">Butterfly Lovers / Jasmine Flower</title>
+  </item>
+  
+  <item number="5" time="1:55 PM" duration="13m" performer="David Bou · Rogie Delfin · Austin Escudero · Lilian Fernandez · Elissa Ibraheim · Victoria Lozano · Natalia Santiesteban · Samantha Shekarkhar">
+    <genre xml:lang="zh-Hans">歌舞</genre>
+    <genre xml:lang="en">Song &amp; Dance</genre>
+    <title xml:lang="zh-Hans">《水调歌头》</title>
+    <title xml:lang="en">“Prelude to the Water Melody”</title>
+  </item>
+  
+  <item number="6" time="2:08 PM" duration="12m" performer="姚佳芮 (Jiarui Yao)">
+    <genre xml:lang="zh-Hans">演唱</genre>
+    <genre xml:lang="en">Vocal</genre>
+    <title xml:lang="zh-Hans">明月几时有</title>
+    <title xml:lang="en">“When Will the Moon Be Clear and Bright?”</title>
+    <bio xml:lang="zh-Hans">迈阿密戴德学院声乐教授。</bio>
+    <bio xml:lang="en">Vocal professor at Miami Dade College.</bio>
+  </item>
+  
+  <item number="7" time="2:20 PM" duration="12m" performer="Jimenez‑Maydon · Lucia Moreno · Carolina Hudson · Alexa Natori · Yumeno">
+    <genre xml:lang="zh-Hans">扇舞/龙舞</genre>
+    <genre xml:lang="en">Fan &amp; Dragon Dance</genre>
+    <title xml:lang="zh-Hans">《骁》</title>
+    <title xml:lang="en">“Xiao”</title>
+  </item>
+  
+  <item number="8" time="2:32 PM" duration="12m" performer="Zahara Cunningham · Annalia Bernadin · Taliyah Nunes · Aniya Charles · Brea Washington · Frantzcesskah Jean">
+    <genre xml:lang="zh-Hans">歌舞</genre>
+    <genre xml:lang="en">Song &amp; Dance</genre>
+    <title xml:lang="zh-Hans">《寄明月》</title>
+    <title xml:lang="en">“To the Bright Moon”</title>
+  </item>
+  
+  <item number="9" time="2:44 PM" duration="11m" performer="Samy El Nernissi">
+    <genre xml:lang="zh-Hans">说唱</genre>
+    <genre xml:lang="en">Rap</genre>
+    <title xml:lang="zh-Hans">《字正腔圆》</title>
+    <title xml:lang="en">“Perfect Diction”</title>
+  </item>
+  
+  <item number="10" time="2:55 PM" duration="12m" performer="Noah Mitchell">
+    <genre xml:lang="zh-Hans">演唱</genre>
+    <genre xml:lang="en">Vocal</genre>
+    <title xml:lang="zh-Hans">《生僻字》</title>
+    <title xml:lang="en">“Uncommon Chinese Characters”</title>
+  </item>
+  
+  <item number="11" time="3:07 PM" duration="13m" performer="于洁 (Yu Jie) × Noah Mitchell">
+    <genre xml:lang="zh-Hans">京剧</genre>
+    <genre xml:lang="en">Peking Opera</genre>
+    <title xml:lang="zh-Hans">梨花颂 (+ 传承二重唱)</title>
+    <title xml:lang="en">Ode to the Pear Blossom (+ Heritage Duet)</title>
+  </item>
+  
+  <item number="12" time="3:20 PM" duration="12m" performer="Joshua Ho">
+    <genre xml:lang="zh-Hans">演唱</genre>
+    <genre xml:lang="en">Vocal</genre>
+    <title xml:lang="zh-Hans">朋友 (韩语)</title>
+    <title xml:lang="en">“Friend” (Korean)</title>
+  </item>
+  
+  <item number="13" time="3:32 PM" duration="13m" performer="World Class Martial Arts">
+    <genre xml:lang="zh-Hans">跆拳道</genre>
+    <genre xml:lang="en">Taekwondo</genre>
+    <title xml:lang="zh-Hans">表演</title>
+    <title xml:lang="en">Performance + “Soda Pop”</title>
+  </item>
+  
+  <item number="14" time="3:45 PM" duration="13m" performer="宋怡 (Yi Song) · 束放 (Fang Su)">
+    <genre xml:lang="zh-Hans">二重奏</genre>
+    <genre xml:lang="en">Duet</genre>
+    <title xml:lang="zh-Hans">浏阳河</title>
+    <title xml:lang="en">“Liuyang River”</title>
+    <bio xml:lang="zh-Hans">国家一级专业古筝演奏家，毕业于中央音乐学院，曾获多项重要器乐比赛大奖。</bio>
+    <bio xml:lang="en">National First‑Class professional guzheng performer in China, graduate of the Central Conservatory of Music, and winner of major instrument competitions.</bio>
+  </item>
+  
+  <item number="15" time="3:58 PM" duration="14m" performer="唐长魁 (Changkui Tang)">
+    <genre xml:lang="zh-Hans">京胡独奏</genre>
+    <genre xml:lang="en">Jinghu Solo</genre>
+    <title xml:lang="zh-Hans">夜深沉</title>
+    <title xml:lang="en">“Deep in the Night”</title>
+    <bio xml:lang="zh-Hans">著名笛子、二胡、京胡演奏家；曾任解放军空军歌舞团民乐队队长。</bio>
+    <bio xml:lang="en">Renowned performer of dizi, erhu and jinghu; former head of the folk orchestra of the PLA Air Force Song and Dance Ensemble.</bio>
+  </item>
+  
+  <item number="16" time="4:12 PM" duration="12m" performer="伊淳 (Yi Chun) · Olivia Tsai · Allina · Annie">
+    <genre xml:lang="zh-Hans">舞蹈</genre>
+    <genre xml:lang="en">Dance</genre>
+    <title xml:lang="zh-Hans">雨巷佳人</title>
+    <title xml:lang="en">“Lady of the Rainy Alley”</title>
+  </item>
+  
+  <item number="17" time="4:24 PM" duration="12m" performer="Angelina Cui（崔墨熙）· Cecilia Stoute Chen（陈天）">
+    <genre xml:lang="zh-Hans">诗歌朗诵</genre>
+    <genre xml:lang="en">Poetry Recital</genre>
+    <title xml:lang="zh-Hans">明月几时有</title>
+    <title xml:lang="en">“When Will the Moon Be Clear and Bright?”</title>
+  </item>
+  
+  <item number="18" time="4:36 PM" duration="12m" performer="Selina Zhou">
+    <genre xml:lang="zh-Hans">钢琴</genre>
+    <genre xml:lang="en">Piano</genre>
+    <title xml:lang="zh-Hans">〈我和我的祖国〉与世界名曲</title>
+    <title xml:lang="en">“My Motherland and I” + World Classics</title>
+    <bio xml:lang="zh-Hans">12岁时荣获ELITE国际音乐比赛大奖；获得郎朗的认可与赞誉。</bio>
+    <bio xml:lang="en">Won the ELITE INTERNATIONAL MUSIC COMPETITION at age 12; received recognition from Lang Lang.</bio>
+  </item>
+  
+  <item number="19" time="4:48 PM" duration="12m" performer="All performers">
+    <genre xml:lang="zh-Hans">谢幕</genre>
+    <genre xml:lang="en">Curtain Call</genre>
+    <title xml:lang="zh-Hans">汉服秀</title>
+    <title xml:lang="en">Hanfu Fashion Show</title>
+    <bio xml:lang="zh-Hans">汉服秀全体表演人员致谢。</bio>
+    <bio xml:lang="en">Acknowledgements by all performers of the Hanfu Show.</bio>
+  </item>
+</festival>
